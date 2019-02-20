@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div id="formS">
+			<input type="text" name="name" />
+			<select name="selName">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+
+			<input type="checkbox" name="chkName1" value="chk1" />
+			<input type="checkbox" name="chkName2" value="chk2" />
+
+			<input type="radio" name="sex" value="girl" />女
+			<input type="radio" name="sex" value="boy" />男
+
+			<textarea name="txtArea" rows="" cols=""></textarea>
+		</div>
+
+		<input type="button" value="get" onclick="getParams()" />
+
+		<script>
+			function getParams() {
+				let _eles = document.getElementById("formS").querySelectorAll("[name]"),
+					_params = {};
+				_eles.forEach(function(v) {
+					var tag = v.tagName.toLowerCase(),
+						type = v.type,
+						name = v.name;
+					console.log(tag, type, name)
+					if((tag === 'input' && type === 'checkbox') || (tag === 'input' && type === 'radio')) {
+						if(v.checked) _params[name] = v.value;
+					} else {
+						_params[name] = v.value;
+					}
+				});
+
+				console.log(_params);
+			}
+		</script>
+	</body>
+
+</html>

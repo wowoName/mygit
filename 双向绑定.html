@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/model.js"></script>
+	</head>
+
+	<body>
+		<div id="formEle">
+			<input type="text" v-model='aa' />
+			<input type="text" v-model='aa' />
+			<input type="radio" v-model='bb' value="1" name='1' />
+			<input type="radio" v-model='bb' value="2" name='1' />
+			<input type="radio" v-model='bb' value="3" name='1' />
+			<input type="checkbox" v-model='cc' value='2' />
+			<textarea name="" rows="" cols="" v-model='dd'></textarea>
+			<select name="" v-model='ee'>
+				<option value="1">1</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<input type="button" onclick="setValue()" value="测试" />
+			<input type="text" id="jhj" />
+		</div>
+
+		<script type="text/javascript">
+			var aa = {
+				'aa': 1,
+				'bb': 2,
+				'cc': 2,
+				'dd': 4,
+				'ee': 4,
+				name: "小明"
+			};
+			var book = {
+				_year: 2004,
+				edition: 1
+			};
+
+			new LisuForm(aa);
+
+			function setValue() {
+				var aa = {
+					'aa': 1111,
+					'bb': 2,
+					'cc': 2,
+					'dd': 4,
+					'ee': 4,
+					name: "小明"
+				};
+				new LisuForm(aa);
+			}
+		</script>
+	</body>
+
+</html>

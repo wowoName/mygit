@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>self-vue</title>
+	</head>
+	<style>
+		#app {
+			text-align: center;
+		}
+	</style>
+
+	<body>
+		<div id="app">
+			<h2>{{title}}</h2>
+			<input v-model="name">
+			<h1>{{name}}</h1>
+			<select name="" v-model="sel">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+			<input type="radio" value='1' name="sex" v-model='radio2' />
+			<input type="radio" value='2' name="sex" v-model='radio2' />
+			<input type="checkbox" value='1' v-model='check1' />
+			<input type="checkbox" value='2' v-model='check1' />
+			<input type="checkbox" value='3' v-model='check1' />
+			<input type="text" v-model="textM" />
+			<span>{{textM}}</span>
+			<button v-on:click="clickMe">click me!</button>
+		</div>
+	</body>
+	<script src="js/observer.js"></script>
+	<script src="js/watcher.js"></script>
+	<script src="js/compile.js"></script>
+	<script src="js/index.js"></script>
+	<script type="text/javascript">
+		var a = new SelfVue({
+			el: '#app',
+			data: {
+				title: 'hello world',
+				name: 'canfoo',
+				sel: 2,
+				radio2: '2',
+				textM: 'girl',
+				check1: 2
+			},
+			methods: {
+				clickMe: function() {
+					this.title = 'hello world';
+				}
+			},
+			mounted: function() {
+				window.setTimeout(() => {
+					this.title = '你好';
+				}, 1000);
+			}
+		});
+	</script>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+
+		<style>
+			#bgImg,
+			.featureImg {
+				width: 143px;
+				height: 50px;
+				border: 1px solid royalblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img src="" alt="" id="cropImg1" crossorigin="anonymous" />
+		<div id="bgImg">
+
+		</div>
+
+		<div class="cloudInfoUnion">
+			<div class="showCloud">
+				<div class="featureImg"></div>
+			</div>
+
+			<div class="showCloud">
+				<div class="featureImg"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			/**
+			 * 对图片进行裁剪
+			 */
+			function crop(url) {
+				let ImgObj = new Image();
+				ImgObj.crossOrigin = 'anonymous'; //可选值：anonymous，*      
+				ImgObj.src = "img/201812101902160sbwjen.jpg"; //"https://img.alicdn.com/tps/i4/TB1J1k2w9rqK1RjSZK9SutyypXa.jpg_q100.jpg";
+
+				ImgObj.onload = function() {
+					if(ImgObj.fileSize > 0 || (ImgObj.width > 0 && ImgObj.height > 0)) {
+						let _cropCanvas = document.createElement('canvas');
+						_cropCanvas.width = 153;
+						_cropCanvas.height = 65;
+						//drawImage(image,sourceX,sourceY,sourceWidth,sourceHeight,x,y,width,height) : 从图片中切割出一个矩形区域
+						_cropCanvas.getContext('2d').drawImage(ImgObj, 308, 446, 152, 61, 0, 0, 143, 50); // 保存图片信息
+						let _lastImageData = _cropCanvas.toDataURL();
+						// 将裁剪出来的信息展示
+						//imageShow.src = _lastImageData;
+						document.getElementById("cropImg1").src = _lastImageData;
+						document.getElementById("bgImg").style.cssText = "background:url(" + _lastImageData + ") 0 0 no-repeat ";
+					}
+				}
+				ImgObj.onerror = function() {
+
+				}
+
+			}
+			crop(document.getElementById("cropImg"), 100, 100);
+
+			var thisCloundData = [{
+				discernResult: null,
+				imgUrl: "img/aaa.jpg",
+				platePosition: "[350,645,421,843]",
+				recordId: 942,
+				serverPlateNo: "鲁B65V66",
+				serverPlateType: "7201",
+				uuid: "8e0b663060d84cb19bfb30d2fd7a3d65"
+			}];
+			var cloundEle = $(".cloudInfoUnion .showCloud");
+
+			function getImg() {
+				for(ci = 0; ci < thisCloundData.length; ci++) {
+					(function(ci, thisCloundData) {
+						var ImgObj = new Image();
+						ImgObj.src = thisCloundData[ci].imgUrl;
+						ImgObj.onload = function() {
+							var thisPosition = JSON.parse(thisCloundData[ci].platePosition),
+								scaleW = thisPosition[3] - thisPosition[1], //成像的宽
+								scaleH = thisPosition[2] - thisPosition[0], //成像的高
+								bgSizeW = ImgObj.width - (scaleW - 143), //背景图的宽 
+								bgSizeH = ImgObj.height - (scaleH - 50), //背景图的高
+								posiX = -thisPosition[1] - (scaleW - 143) / 2,
+								posiY = -thisPosition[0] - (scaleH - 50) / 2;
+
+							bgSizeW = ImgObj.width * (1 - parseInt((scaleW - 143) / 143));
+							bgSizeH = ImgObj.height * (1 - parseInt((scaleH - 50) / 50));
+
+							$(cloundEle[ci]).find(".featureImg").css({
+								"background-image": 'url(' + thisCloundData[ci].imgUrl + ')',
+								"background-position": posiX + "px " + posiY + "px",
+								"background-size": bgSizeW + "px " + bgSizeH + "px"
+							});
+						};
+					})(ci, thisCloundData);
+				}
+			}
+			getImg();
+		</script>
+	</body>
+
+</html>

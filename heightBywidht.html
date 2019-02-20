@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<title>Document</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.con {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				width: 90%;
+				margin: 10px auto;
+			}
+			
+			.item {
+				width: 25%;
+				border-radius: 100%;
+				border: 1px solid #e6e6e6;
+				box-shadow: 3px 3px 3px #E6E6E6;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				flex-direction: column;
+				color: #FFFFFF;
+			}
+			
+			.item::before {
+				content: "";
+				padding-top: 100%;
+				display: block;
+			}
+			
+			.item span {
+				color: red;
+				font-size: 14px;
+				width: 100%;
+				display: inline-block;
+				padding: 5px 15px;
+				text-align: center;
+				top: 50%;
+				position: absolute;
+				height: 30px;
+				line-height: 30px;
+				margin-top: -15px;
+			}
+			
+			.content .title-tab {
+				width: 25%;
+				border-radius: 100%;
+				border: 1px solid #e6e6e6;
+				box-shadow: 3px 3px 3px #E6E6E6;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				flex-direction: column;
+				color: #FFFFFF;
+			}
+			
+			.title-tab::before {
+				content: "";
+				padding-top: 100%;
+				display: block;
+			}
+			
+			@media only screen and (max-width:1366px) {
+				.title-tab {
+					width: 30%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="content">
+			<div class="title-tab"></div>
+			<div class="title-tab"></div>
+			<div class="title-tab"></div>
+		</div>
+		<div class="con">
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"><span>哈哈</span><span>哈哈</span></div>
+		</div>
+	</body>
+
+</html>

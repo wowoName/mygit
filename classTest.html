@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var a = [1, 2, 3, 4, 5, 6];
+			a.forEach((v) => {
+				console.log(v);
+			})
+			/**
+			 * IE不支持
+			 * 
+			 * **/
+			class Animal {
+				constructor(opt, className) {
+					this.options = {
+						name: "无名",
+						age: 0
+					};
+					this.options = Object.assign(this.options, opt);
+					this.className = className;
+					this.sex = "";
+
+				};
+
+				sayHello() {
+					document.write("我叫", this.options.name, "班级", this.className, this.sex, this.bite);
+					this.sayEn();
+				};
+				sayEn() {
+					//document.write("my name", this.options.name);
+				};
+				get sexValue() {
+					return "ffffffffffffff";
+				}
+				set sexValue(sexs) {
+					this.sex = sexs;
+				}
+
+			}
+			const dog = new Animal({
+				age: 0
+			}, "dsd");
+			dog.sayHello();
+			dog.sexValue = "男";
+			console.log(dog.sex)
+			/**
+			 * 兼容IE
+			 * 
+			 * **/
+			function A(name) {
+				this.name = name;
+				this.say = function() {
+					document.write("我叫", this.name);
+				}
+			}
+			//var a = new A("xc").say();
+		</script>
+	</body>
+
+</html>

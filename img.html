@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<span>0123456789</span>
+		<span>ABCDEF</span>
+		<span>水电费电饭锅电饭锅水电费</span>
+		<span>sdfsdfa</span>
+		<span>车辆</span>
+		<input accept="image/*" type="file" />
+		<input type="file" accept="image/*" capture="camera">
+		<input type="file" accept="image/*">
+
+		<script type="text/javascript">
+			console.log(window.screenTop); //浏览器距离Top
+
+			console.log(window.screenLeft); //浏览器距离Left
+
+			console.log(window.screen.height); //屏幕分辨率的高
+
+			console.log(window.screen.width); //屏幕分辨率的宽
+
+			console.log(window.screen.availHeight); //屏幕可用工作区的高
+
+			console.log(window.screen.availWidth); //屏幕可用工作区的宽
+
+			var aaa = [{
+				age: '1'
+			}, {
+				age: '2'
+			}, {
+				age: '3'
+			}, {
+				age: '4'
+			}];
+			var cc=aaa.reduce(function(pre, current, index) {
+				console.log(pre,current,index);
+				return pre += current.age;
+			}, "");
+			console.log(cc);
+			
+		</script>
+		<style type="text/css">
+			@font-face {
+				font-family: eparkFamily;
+				src: url('fontFamily/STHeiti-Light.ttc'), url('fontFamily/STHeiti-Medium.ttc');
+			}
+			
+			body {
+				overflow: auto;
+				font-family: '\5FAE\8F6F\96C5\9ED1', SimSun, Helvetica, STHeiti, Droid Sans Fallback;
+			}
+			
+			img {
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</body>
+
+</html>

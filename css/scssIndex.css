@@ -1,0 +1,24 @@
+a {
+	transition: -webkit-transform 1s;
+	-webkit-transition: -webkit-transform 1s;
+	transition: transform 1s;
+	transition: transform 1s, -webkit-transform 1s;
+}
+
+div {
+	position: relative;
+	width: -webkit-calc(100% - 100px);
+	width: calc(100% - 100px);
+	background-color: cadetblue;
+	height: 200px;
+}
+
+.lisu-con {
+	background-color: red;
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: flex;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNjc3NJbmRleC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQSxpQ0FBQTtDQUFBLHlDQUFBO0NBQUEseUJBQUE7Q0FBQSwrQ0FBQTtDQUFBOztBQUdBO0NBQ0MsbUJBQUE7Q0FJQSxrQ0FKQTtDQUlBLDBCQUpBO0NBREQsNEJBQUE7Q0FDQyxjQUFBO0NBT0E7O0FBRUQ7Q0FIQyxzQkFBYztDQUFkLHFCQUFjO0NBQWQscUJBQUE7Q0FBQSxzQkFBYztDQUFkLGtCQUFjO0NBRmYsY0FBQTtDQVlDIiwiZmlsZSI6InNjc3NJbmRleC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhIHsgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDFzIH0iXX0= */

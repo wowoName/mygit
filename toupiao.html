@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<script type="text/javascript">
+			//显示礼物赠送成功信息，移动版专用！
+			function showGiftSuccessMessage(msg) {
+				alert(msg);
+			}
+
+			//是否允许投票全局变量
+			var isQQVerifyDone = true;
+			var isWeixinVerifyDone = true;
+			var isWaitTimeDone = true;
+			var isGetLocationDone = true;
+			var isXinyanDeviceFingerprintDone = true;
+			var action = 'Shortcut';
+			var waitTimeBeforeVote = 0;
+			var customItemPagePosition = 'AfterVoteTopic';
+			var endDatetimeString = '2018/10/29 17:00:00';
+			var isCountDownEndDatetime = true;
+			var optionToBeSelectedShowName = '候选项';
+			var allTopicMaxVoteQuantity = '-1';
+			var allTopicMinVoteQuantity = '-1';
+		</script>
+		<style type="text/css">
+			.OptionSummary {
+				height: 100px
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="http://static.vote8.cn/Css/Skin/dangzheng/bootstrap.min.css?V=20180509-1" />
+		<link rel="stylesheet" type="text/css" href="http://lib.baomitu.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://static.vote8.cn/Css/Skin/dangzheng/combind_mobile.min.css?V=20180509-1" />
+		
+		
+		<script id="j_9ccd2ed7c2d75d1b" src="http://lib.baomitu.com/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+		<script id="j_bc5dd18838ac2185" src="http://lib.baomitu.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+		
+		<script id="j_18d5a4e1fbfd4fe2" src="http://static.vote8.cn/JS/Front/Mobile/Global.js?V=20180509-1" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="http://static.vote8.cn/Css/Colorbox/Style1/colorbox.css?V=20180509-1" />
+		<script id="j_a90f1fe8bd0c71c3" src="http://static.vote8.cn/JS/UI.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_709826a01aea64a4" src="http://static.vote8.cn/JS/jquery.countdown.min.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_2693b8ef8803fa54" src="http://static.vote8.cn/JS/jquery.colorbox-min.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_6b8623687b390427" src="http://static.vote8.cn/JS/jquery.json.min.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_a1b8874e8e9360b8" src="http://static.vote8.cn/JS/jquery.cookie.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_d0bb92fdbeb3dd8d" src="http://static.vote8.cn/JS/VideoUrl.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_6e4f591039ccce8d" src="http://static.vote8.cn/JS/Common.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_c8d7682c0335e8f2" src="http://static.vote8.cn/JS/Front/Mobile/Home.js?V=20180509-1" type="text/javascript"></script>
+		<script id="j_7c4a502cd86d1a83" src="http://static.vote8.cn/JS/jqueryPlugin.js?V=20180509-1" type="text/javascript"></script>
+		<title>
+			潍坊市功勋企业家评选活动
+		</title>
+	</head>
+
+	<body class="CustomStyle-Body-Mobile">
+
+		<form method="post" action="./7455784" id="theform">
+			<div class="aspNetHidden">
+				<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTk4OTkyNzY4OWRk1a8oHO+e+eqvMe5EEZwcjZApmD8=" />
+			</div>
+
+			<div class="aspNetHidden">
+
+				<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C9E13C34" />
+			</div>
+
+			<div id="CheckboxSelectedCountMessage" style="display: none;" class="alert alert-warning navbar-fixed-top CheckboxSelectedCountMessage" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+				<i class="fa fa-info-circle"></i>
+				<span class="CheckboxSelectedCountMessageContent"></span>
+			</div>
+
+			<script type="text/javascript">
+				$(function() {
+					$(".CustomInfoTop").html(videoLabelFilter($(".CustomInfoTop").html(), '100%', 480));
+				});
+			</script>
+			<div class="CustomInfoTop">
+				<div style="text-align:center;">
+					<img src="http://cache.vote8.cn/Upload/943663/EditorUploadImages/5d610118a89a44c981ea34fc0352c1f4.jpg" alt="" />
+				</div>
+			</div>
+
+			<div id="content_pnlChannelDisabledNotify" class="container ContentWrapper ChannelDisabledNotify">
+
+				<div id="content_pnlDisabledMessage" class="alert alert-warning DisabledMessage" role="alert">
+
+					<i class="fa fa-exclamation-triangle"></i>
+					<span id="content_lbDisabledMessage">抱歉，本投票活动需要进行微信登录验证，使用移动设备浏览器无法进行微信验证，请使用以下其他投票渠道参与。</span>
+
+				</div>
+
+				<div id="content_pnlVoteChannelPCWebIntro" class="VoteChannelIntro">
+
+					<div class="thumbnail text-center">
+						<div class="caption">
+							<h4>通过电脑进入投票</h4>
+							<p>请使用电脑访问以下网址进入投票。</p>
+							<p>
+								<a id="content_hplVoteChannelPCWebVoteUrl" href="http://wfnews.v.vote8.cn" target="_blank">http://wfnews.v.vote8.cn</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div id="content_pnlVoteChannelWeixinClientIntro" class="VoteChannelIntro">
+
+					<div class="thumbnail text-center">
+						<img id="content_imgWeixinClientQrCode" class="IntroQrCode" src="http://main.vote8.cn/Interface/QrCodeImage.ashx?Type=Subject&amp;SubjectID=2896755&amp;Size=6" />
+						<div class="caption">
+							<h4>通过微信客户端投票</h4>
+							<p>请使用微信客户端扫描二维码进入投票。</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div id="content_pnlMain" class="container ContentWrapper HomeMainContent">
+
+				<div id="content_pnlTimelineStatus" class="spacing TimelineStatus">
+
+					<i class="fa fa-clock-o"></i>
+
+					<div id="pnlEndDatetimeClock">
+
+						离投票结束还有：
+						<span id="weeks"></span>周
+						<span id="daysLeft"></span>天
+						<span id="hours"></span>小时
+						<span id="minutes"></span>分
+						<span id="seconds"></span>秒
+
+					</div>
+
+				</div>
+				<div id="content_pnlVoteDisabledNotify" class="alert alert-warning VoteDisabledNotify" role="alert">
+
+					<i id="content_iVoteDisabledNotifyIcon" class="fa fa-exclamation-triangle"></i>
+					<span id="content_lbVoteDisabledNotify">抱歉，本投票活动需要进行微信登录验证，使用移动设备浏览器无法进行微信验证。</span>
+
+				</div>
+				<div id="content_pnlShortcut" class="ShortcutWrapper">
+
+					<h3>您将投票给：</h3>
+					<blockquote>
+						<div id="content_pnlShortcutOptionImage" class="thumbnail">
+
+							<img id="content_imgShortcutOption" src="http://cache.vote8.cn/Upload/943663/VoteOptionImage/7455784.jpg?v=13184735034" />
+
+						</div>
+						<h4>
+                        徐鹏强</h4>
+					</blockquote>
+
+				</div>
+				<div id="pnlWeixinVerifyMessage" class="alert alert-warning WeixinVerifyMessage" role="alert">
+
+					<script type="text/javascript">
+						isWeixinVerifyDone = false;
+						UpdateVoteButtonStatus();
+					</script>
+
+					<i></i>
+					<span id="lbWeixinVerifyStatus" class="WeixinNotVerify">[未验证]</span>
+					<span id="content_lbWeixinVerifyMessage">本投票活动每个微信号限投一次。</span>
+
+					<a id="content_hplWeixinVerifyButton" class="btn btn-success btn-sm">验证微信号</a>
+
+				</div>
+				<script type="text/javascript">
+					/***********获取地理位置：开始***********/
+					var isLocationLimit = false;
+					var isGetLocationViaBrowser = false;
+					var isMustGetLocationViaBrowser = false;
+					var latitude = "";
+					var longitude = "";
+
+					$(function() {
+						if(isLocationLimit) {
+							isGetLocationDone = false;
+							UpdateVoteButtonStatus();
+
+							//显示等待定位提示
+							$("#LocationVerifyProcessing").show();
+
+							if(isGetLocationViaBrowser) {
+								//getLocation();
+							} else {
+								checkIsCurrentCityVoteEnabled();
+							}
+
+						}
+					});
+
+					///检查当前城市是否允许投票
+					function checkIsCurrentCityVoteEnabled() {
+						var subjectID = 2896755;
+						var geoLocationEncode = $("#hiddenGeoLocationEncode").val();
+
+						$.getJSON("/Front/Ajax/LocationLimitVerify.ashx", {
+							SubjectID: subjectID,
+							Latitude: latitude,
+							Longitude: longitude,
+							GeoLocationEncode: geoLocationEncode
+						}, function(data) {
+							var isCurrentCityVoteEnabled = data.IsCurrentCityVoteEnabled;
+							if(isCurrentCityVoteEnabled) {
+								isGetLocationDone = true;
+								UpdateVoteButtonStatus();
+								showLocationVerifyResult(data.ReturnMessage, "success");
+							} else {
+								showLocationVerifyResult(data.ReturnMessage, "failure");
+							}
+							$("#LocationVerifyProcessing").hide();
+						});
+					}
+
+					function getLocationByWeixinJSSDK(_latitude, _longitude, _speed, _accuracy) {
+						//alert(_latitude);
+						if(_latitude != undefined && _latitude != '') {
+							savePosition(_latitude, _longitude);
+						} else {
+							getGeoLocationError("您当前所用浏览器不支持地理位置定位功能。");
+						}
+					}
+
+					//成功获取经纬度
+					function savePosition(_latitude, _longitude) {
+						latitude = _latitude;
+						longitude = _longitude;
+						//alert(longitude);
+						$.get("/Front/Ajax/EncodeGeoLocation.ashx", {
+								SubjectID: 2896755,
+								Latitude: _latitude,
+								Longitude: _longitude
+							},
+							function(data) {
+								$("#hiddenGeoLocationEncode").val(data);
+								$("#hiddenLatitude").val(_latitude);
+								$("#hiddenLongitude").val(_longitude);
+								checkIsCurrentCityVoteEnabled();
+							});
+					}
+
+					//显示当前城市禁止投票信息
+					function getGeoLocationError(message) {
+						if(isMustGetLocationViaBrowser) {
+							showLocationVerifyResult(message, "failure");
+							$("#LocationVerifyProcessing").hide();
+						} else {
+							checkIsCurrentCityVoteEnabled();
+						}
+					}
+
+					//显示定位相关的错误信息
+					function showLocationVerifyResult(message, type) {
+						$("#LocationVerifyResult").show();
+						$("#LocationVerifyResult span").html(message);
+						switch(type) {
+							case "failure":
+								cssName = "alert-warning";
+								$("#LocationVerifyResult").addClass("alert-warning");
+								$('#locationVerifyIcon').addClass('fa fa-warning');
+								break;
+							case "success":
+								$("#LocationVerifyResult").addClass("alert-success");
+								$('#locationVerifyIcon').addClass('fa fa-check');
+								break;
+
+						}
+
+					}
+
+					//提示信息
+					$(function() {
+						var message;
+						if(isGetLocationViaBrowser) {
+							message = '本次投票有地区限制，正在确定您的所在地区，请稍候...<a href="javascript:;" onclick="location=location;">[刷新重试]</a><br />如果浏览器提示请您授权获取地理位置，请点击同意，该信息仅用于判断您是否在允许投票地区。';
+						} else {
+							message = '本次投票有地区限制，正在确定您的所在地区，请稍候...<a href="javascript:;" onclick="location=location;">[刷新重试]</a>';
+						}
+						$("#LocationVerifyProcessing span").html(message);
+					});
+					/***********获取地理位置：结束***********/
+				</script>
+
+				<div id="LocationVerifyProcessing" style="display: none;" class="alert alert-info" role="alert">
+					<i class="fa fa-spinner fa-spin"></i>
+					<span></span>
+				</div>
+				<div id="LocationVerifyResult" style="display: none;" class="alert" role="alert">
+					<i id="locationVerifyIcon"></i>
+					<span></span>
+				</div>
+				<div id="content_pnlVoteDisabledNotifyBottom" class="alert alert-warning VoteDisabledNotify" role="alert">
+
+					<i id="content_iVoteDisabledNotifyIconBottom" class="fa fa-exclamation-triangle"></i>
+					<span id="content_lbVoteDisabledNotifyBottom">抱歉，本投票活动需要进行微信登录验证，使用移动设备浏览器无法进行微信验证。</span>
+
+				</div>
+				<div id="content_pnlFakeVoteButton">
+
+					<a id="hplFakeVoteButton" class="btn btn-primary btn-lg btn-block" disabled="disabled"><i class="fa fa-check-square-o"></i> 投 票！</a>
+					<a id="content_hplReturnAfterFakeVoteButton" class="btn btn-default btn-lg btn-block" href="http://wfnews.v.vote8.cn/m"><i class="fa fa-mail-reply"></i> 返回</a>
+					<input type="hidden" name="ctl00$content$hiddenVoteDisabledMessage" id="hiddenVoteDisabledMessage" value="抱歉，本投票活动需要进行微信登录验证，使用移动设备浏览器无法进行微信验证。" />
+
+				</div>
+
+				<script type="text/javascript">
+					var hasGotWeixinUserInfo = false;
+					var isCommentRequireWeixinAccountVerify = false;
+					var isCommentRequiredAudit = false;
+
+					/*评论栏表情：开始*/
+					//弹出评论表情选择
+					$(function() {
+						$(".CommentEditorWrapper .MoodSelectButton").click(function() {
+
+							if($(".MoodSelectWrapper").length == 0) {
+								$('.CommentEditorWrapper').append(GetReplyMoodList(1));
+							} else {
+								$(".MoodSelectWrapper").remove();
+							}
+						});
+					});
+
+					//选择评论表情事件
+					$(function() {
+						$(document).on('click', '.CommentEditorWrapper .MoodSelectWrapper div input.Icon', function() {
+							var mood = $(this).attr("mood");
+							var $ta = $(this).closest(".CommentEditorWrapper").find("input.CommentInput");
+							$ta.insertContent('[em' + mood + ']');
+							$(this).closest(".MoodSelectWrapper").remove();
+						});
+					});
+
+					//评论表情分页
+					$(function() {
+						$(document).on('click', '.CommentEditorWrapper .MoodSelectPager input.PageButton', function() {
+							var page = $(this).attr("page");
+							$MoodSelectWrapper = $(this).closest(".MoodSelectWrapper");
+							$MoodSelectWrapper.empty();
+							$MoodSelectWrapper.append(GetReplyMoodList(page).children());
+						});
+					});
+
+					//点击评论框时候移除表情栏
+					$(function() {
+						$('.CommentEditorWrapper input.CommentInput').click(function() {
+							$(".CommentEditorWrapper .MoodSelectWrapper").remove();
+						});
+					});
+
+					//生成评论表情列表
+					function GetReplyMoodList(page) {
+						var perPageItemCount = 45;
+						var pageCount = 3;
+
+						var $ul = $('<div></div>');
+						for(var i = 0; i < perPageItemCount; i++) {
+							var $li = $('<input type="button" class="Icon" />');
+							$li.attr("mood", ((page - 1) * perPageItemCount + i).toString());
+							var p = (page - 1) * perPageItemCount * 24 + (i * 24);
+							var backgroundPosition = "-" + p.toString() + "px 0px";
+							$li.css("background-position", backgroundPosition);
+							$ul.append($li);
+						}
+
+						var $pager = $('<div class="MoodSelectPager"></div>');
+						for(var i = 1; i <= pageCount; i++) {
+							var $pageLink = $('<input type="button" class="btn btn-default btn-sm PageButton" value="' + i.toString() + '" />');
+							if(page == i) {
+								$pageLink.addClass("active");
+							}
+							$pageLink.attr("page", i.toString());
+							$pager.append($pageLink);
+						}
+
+						var $MoodSelectWrapper = $('<div class="well MoodSelectWrapper"></div>');
+						$MoodSelectWrapper.append($ul);
+						$MoodSelectWrapper.append($pager);
+
+						return $MoodSelectWrapper;
+					}
+					/*评论栏表情：结束*/
+
+					/***************评论相关：开始***************/
+					//发表评论（主贴）
+					$(function() {
+						//默认nickname
+						if($.cookie("Vote.CommentNickname") != null && $.cookie("Vote.CommentNickname") != '') {
+							$('#tbNickname').val($.cookie("Vote.CommentNickname"));
+						}
+
+						//隐藏微信昵称
+						$(function() {
+							$("#cbHideWeixinInfo").click(function() {
+								if($(this).prop('checked')) {
+									$('#pnlSenderWeixinInfo').hide();
+									$('#pnlCommentNicknameInput').show();
+								} else {
+									$('#pnlSenderWeixinInfo').show();
+									$('#pnlCommentNicknameInput').hide();
+								}
+							});
+						});
+
+						$("#btnPostComment").click(function() {
+							var content = $('#tbCommentContent').val();
+							var face = '0';
+							var subjectID = 2896755;
+							var verifyString = "1540274576,e9659be2d5d3e58df2711fe983e2cdd5";
+							var from = "Subject";
+							var optionID = 0;
+							var weixinNickname;
+							var weixinHeadImgUrl;
+							var weixinHeadImgSmallUrl;
+							var showNickname;
+							var nickname;
+
+							if($('#tbNickname:visible').length == 1) { //不用微信信息
+								nickname = $('#tbNickname').val();
+								if(nickname == '') {
+									alert('请填写昵称！');
+									return;
+								}
+								showNickname = nickname;
+								weixinHeadImgSmallUrl = '';
+								weixinNickname = '';
+								weixinHeadImgUrl = '';
+							} else {
+								nickname = '';
+								weixinNickname = $('#hiddenWeixinNickname').val();
+								weixinHeadImgUrl = $('#hiddenWeixinHeadImgUrl').val();
+								weixinHeadImgSmallUrl = $('#hiddenWeixinHeadImgSmallUrl').val();
+								showNickname = weixinNickname;
+							}
+
+							if(content == '') {
+								alert('请填写评论内容！');
+								return;
+							}
+
+							$.post("/Front/Ajax/GetPostComment.ashx", {
+								Content: content,
+								Nickname: nickname,
+								WeixinNickname: weixinNickname,
+								WeixinHeadImgUrl: weixinHeadImgUrl,
+								Face: face,
+								SubjectID: subjectID,
+								VerifyString: verifyString,
+								OptionID: optionID,
+								Action: 'Root',
+								From: from
+							}, function(data) {
+								var result = Boolean(data.Result);
+								var returnMessage = data.ReturnMessage.toString();
+								if(result) {
+									if(!isCommentRequiredAudit) {
+										insertComment(showNickname, weixinHeadImgSmallUrl, content);
+									}
+									if(nickname != '') {
+										$.cookie('Vote.CommentNickname', nickname, {
+											expires: 30,
+											path: '/'
+										});
+									}
+									$('#tbCommentContent').val('');
+									alert(returnMessage);
+								} else {
+									alert(returnMessage);
+								}
+							}, "json");
+						});
+					});
+
+					//评论回复功能相关
+					$(function() {
+
+						//隐藏回复人的微信昵称
+						$(document).on('change', ".PostReplyWrapper input:checkbox", function() {
+							if($(this).prop('checked')) {
+								$(this).closest('.PostReplyWrapper').find('.ReplySenderWeixinInfo').hide();
+								$(this).closest('.PostReplyWrapper').find('input.ReplyNickname').show();
+							} else {
+								$(this).closest('.PostReplyWrapper').find('.ReplySenderWeixinInfo').show();
+								$(this).closest('.PostReplyWrapper').find('input.ReplyNickname').hide();
+							}
+						});
+
+						//弹出回复框
+						$(".CommentReply").click(function() {
+							var weixinInfo;
+							var nicknameInput;
+							var hideWeixinNicknameCheckbox = '';
+
+							if(hasGotWeixinUserInfo) {
+								var weixinHeadImgSmallUrl = $('#hiddenWeixinHeadImgSmallUrl').val();
+								var weixinNickname = $('#hiddenWeixinNickname').val();
+
+								if(!isCommentRequireWeixinAccountVerify) {
+									hideWeixinNicknameCheckbox = '<div class="checkbox"><label><input type="checkbox" />发表评论时隐藏微信昵称</label></div>';
+								}
+
+								weixinInfo = '<div class="ReplySenderWeixinInfo"><img src="' + weixinHeadImgSmallUrl + '" class="img-circle WeixinHead" /> <span class="text-info">' + weixinNickname + '</span>：</div>';
+								nicknameInput = '<div class="form-group"><input type="text" placeholder="昵称" class="form-control ReplyNickname"  style="display:none;" /></div>';
+							} else {
+
+								if(isCommentRequireWeixinAccountVerify) {
+									alert('发表或回复评论前需要先绑定微信号。');
+									return;
+								} else {
+									weixinInfo = '';
+									nicknameInput = '<div class="form-group"><input type="text" placeholder="昵称" class="form-control ReplyNickname"  /></div>';
+								}
+							}
+
+							$('.CommentRootItem .PostReplyWrapper').remove();
+							var $postReplyWrapper = $('<div class="well PostReplyWrapper">' + weixinInfo + nicknameInput + hideWeixinNicknameCheckbox + '<div class="input-group"><input type="text" placeholder="回复内容..." class="form-control ReplyContent"  />' + '<span class="input-group-addon"><a href="javascript:;" class="SendReply">回复</a></span></div></div>');
+							$(this).closest(".Content").append($postReplyWrapper);
+							if($.cookie("Vote.CommentNickname") != null && $.cookie("Vote.CommentNickname") != '') {
+								$(this).closest(".Content").find(".ReplyNickname").val($.cookie("Vote.CommentNickname"));
+							}
+						});
+
+						//发送回复数据
+						$(document).on('click', ".PostReplyWrapper .SendReply", function() {
+							var content = $(this).closest(".PostReplyWrapper").find(".ReplyContent").val();
+							var rootID = $(this).closest(".Content").attr("commentid");
+							var subjectID = 2896755;
+							var verifyString = "1540274576,e9659be2d5d3e58df2711fe983e2cdd5";
+							var $rootItem = $(this).closest(".CommentRootItem");
+							var from = "Subject";
+							var optionID = 0;
+							var weixinNickname;
+							var weixinHeadImgUrl;
+							var weixinHeadImgSmallUrl;
+
+							var showNickname;
+							var nickname;
+							if($(this).closest(".PostReplyWrapper").find(".ReplyNickname:visible").length == 1) { //不用微信信息
+								nickname = $(this).closest(".PostReplyWrapper").find(".ReplyNickname").val();
+								if(nickname == '') {
+									alert('请填写昵称！');
+									return;
+								}
+								showNickname = nickname;
+								weixinHeadImgSmallUrl = '';
+								weixinNickname = '';
+								weixinHeadImgUrl = '';
+							} else {
+								nickname = '';
+								weixinNickname = $('#hiddenWeixinNickname').val();
+								weixinHeadImgUrl = $('#hiddenWeixinHeadImgUrl').val();
+								weixinHeadImgSmallUrl = $('#hiddenWeixinHeadImgSmallUrl').val();
+								showNickname = weixinNickname;
+							}
+
+							if(content == '回复内容...') {
+								alert('请填写回复内容。');
+								return;
+							}
+
+							if(nickname == '昵称') {
+								alert('请填写昵称。');
+								return;
+							}
+
+							$.post("/Front/Ajax/GetPostComment.ashx", {
+								Content: content,
+								Nickname: nickname,
+								WeixinNickname: weixinNickname,
+								WeixinHeadImgUrl: weixinHeadImgUrl,
+								SubjectID: subjectID,
+								VerifyString: verifyString,
+								OptionID: optionID,
+								RootID: rootID,
+								Action: 'Reply',
+								From: from
+							}, function(data) {
+								var result = Boolean(data.Result);
+								var returnMessage = data.ReturnMessage.toString();
+								if(result) {
+									insertCommentReply($rootItem, showNickname, weixinHeadImgSmallUrl, content);
+									if(nickname != '') {
+										$.cookie('Vote.CommentNickname', nickname, {
+											expires: 30,
+											path: '/'
+										});
+									}
+									$rootItem.find('input.ReplyContent').val('');
+									alert('回复评论成功！');
+								} else {
+									alert(returnMessage);
+								}
+							}, "json");
+						});
+					});
+
+					//插入主贴
+					function insertComment(showNickname, weixinHeadImgSmallUrl, content) {
+						var headImg = '';
+						if(weixinHeadImgSmallUrl != '') {
+							headImg = '<img src="' + weixinHeadImgSmallUrl + '" class="img-circle WeixinHead" /> ';
+						}
+						var $li = $('<li class="list-group-item CommentRootItem"><div class="Content">' + headImg + '<span class="text-info Nickname"></span>： <span class="CommentContent"></span><span class="PostDatetime">（刚刚）</span></div></li>');
+						$li.find('.Nickname').text(showNickname);
+						$li.find('.CommentContent').text(content);
+						$('.CommentList > ul').prepend($li);
+					}
+
+					//插入回复
+					function insertCommentReply($rootItem, showNickname, weixinHeadImgSmallUrl, content) {
+						var headImg = '';
+						if(weixinHeadImgSmallUrl != '') {
+							headImg = '<img src="' + weixinHeadImgSmallUrl + '" class="img-circle WeixinHead" /> ';
+						}
+						var $li = $('<li class="CommentReplyItem">' + headImg + '<span class="text-info Nickname"></span>： <span class="CommentContent"></span><span class="PostDatetime">（刚刚）</span></li>');
+						$li.find('.Nickname').text(showNickname);
+						$li.find('.CommentContent').text(content);
+						if($rootItem.find(".ReplyList").length == 0) {
+							$rootItem.append($('<div class="ReplyList"><ul></ul></div>'));
+						}
+						$rootItem.find(".ReplyList ul").prepend($li);
+						$rootItem.find(".PostReplyWrapper").remove();
+
+					}
+
+					//点击弹出必须微信验证的提示链接
+					$(function() {
+						$("#btnPostCommentFake").click(function() {
+							$('#pnlCommentWeixinLoginTips').show();
+							$("#btnPostCommentFake").hide();
+						});
+					});
+					/***************评论相关：结束***************/
+				</script>
+
+				<a name="Comment"></a>
+
+			</div>
+
+			<input type="hidden" name="ctl00$content$hiddenRefererUrl" id="hiddenRefererUrl" />
+			<input type="hidden" name="ctl00$content$hiddenTimeStampEncodeString" id="hiddenTimeStampEncodeString" value="1540274576,21766028f79cdf907f7e68cccbcef75f" />
+			<input type="hidden" name="ctl00$content$hiddenLatitude" id="hiddenLatitude" />
+			<input type="hidden" name="ctl00$content$hiddenLongitude" id="hiddenLongitude" />
+			<input type="hidden" name="ctl00$content$hiddenGeoLocationEncode" id="hiddenGeoLocationEncode" />
+
+			<div class="InvisibleCounter">
+
+				<script src="https://s5.cnzz.com/z_stat.php?id=5855278&web_id=5855278" language="JavaScript"></script>
+
+			</div>
+
+			<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="pnlAlertModal">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-body" id="pnlAlertModalContent">
+							<p></p>
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-default" onclick="$('#pnlAlertModal').modal('hide');">确认</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</body>
+
+</html>

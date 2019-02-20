@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimun-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="new_fil1e.js" type="text/javascript" charset="utf-8"></script>
+
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.lisuIn {
+				position: fixed;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			.item {
+				position: absolute;
+				width: 100%;
+				height: 90%;
+				top: 5%;
+				left: 0%;
+				background-color: #FFFFFF;
+				width: 600%;
+				overflow: hidden;
+			}
+			
+			.item div {
+				position: relative;
+				float: left;
+				width: 16.66%;
+				height: 100%;
+				text-align: center;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			.item img {
+				width: 100%;
+			}
+			
+			.list-left {
+				position: fixed;
+				top: 50%;
+				left: 30px;
+				width: 10%;
+				height: 10%;
+				background-color: #0062CC;
+				z-index: 10;
+			}
+			
+			.list-right {
+				position: fixed;
+				top: 50%;
+				right: 30px;
+				width: 10%;
+				height: 10%;
+				background-color: #0062CC;
+				z-index: 10;
+			}
+		</style>
+	</head>
+
+	<body>
+		<iframe src="test.html" width="" height=""></iframe>
+		<!--<div class="lisuIn">
+			<div class="list-left" onclick="next()"></div>
+			<div class="item" id="item">
+				<div>
+					<img src="//img.alicdn.com/imgextra/i3/179/O1CN01c7eRtb1DC1NdGvhNM_!!179-0-luban.jpg_q100.jpg" alt="" />
+				</div>
+				<div>
+					<img src="//img.alicdn.com/imgextra/i4/80/O1CN01UQGluJ1CSgAZNi1nR_!!80-0-luban.jpg_q100.jpg" alt="" />
+				</div>
+
+				<div>
+					<img src="https://img.alicdn.com/simba/img/TB1KR7pbjbguuRkHFrdSuv.LFXa.jpg" alt="" />
+				</div>
+				<div>
+					<img src="//img.alicdn.com/tps/i4/TB1j1.kspzqK1RjSZFCSuvbxVXa.jpg" alt="" />
+				</div>
+
+				<div>
+					<img src="//img.alicdn.com/imgextra/i2/53/O1CN01b6cJri1CGJTbeYMNS_!!53-0-luban.jpg_q100.jpg" alt="" />
+				</div>
+				<div>
+					<img src="//img.alicdn.com/imgextra/i3/179/O1CN01c7eRtb1DC1NdGvhNM_!!179-0-luban.jpg_q100.jpg" alt="" />
+				</div>
+			</div>
+			<div class="list-right" onclick="pre()"></div>
+		</div>-->
+
+		<script type="text/javascript">
+			var a = "sdfsdf水电费水手动<br>阀电费";
+			console.log(a.replace("<br>", ''));
+			var a = /^[0-9]*$/,
+				b = "10.";
+			console.log(a.test(b));
+			class lisuSwipoer {
+
+				constructor(opt = {}) {
+					this.options = {
+						_swiperWidth: document.documentElement.clientWidth,
+						_swiperIndex: 0,
+						_animationFinished: true,
+						_swiperTransformX: 0,
+						_eleMain: null,
+						imgs: []
+					};
+					this.options = Object.assign(this.options, opt);
+					this.options.imgs.push(this.options.imgs[0]);
+					this.init();
+				};
+				init() {
+					let hasSwiper = document.getElementsByClassName("lisuIn");
+					if(hasSwiper.length == 0)
+						this.createEle();
+					this.setSwiperImgs();
+				};
+				/**
+				 * 创建容器
+				 * **/
+				createEle() {
+					const _that = this;
+					let _swiperEles = document.createDocumentFragment(),
+						_main = document.createElement("div"),
+						_swiperNext = document.createElement("div"),
+						_swiperPre = document.createElement("div"),
+						_swiperMain = document.createElement("div");
+					_swiperMain.className = "item";
+					_main.className = "lisuIn";
+					_swiperNext.className = "list-left";
+					_swiperNext.addEventListener("click", function() {
+						_that.next();
+					});
+					_main.appendChild(_swiperNext);
+					_main.appendChild(_swiperMain);
+					_swiperPre.className = "list-right";
+					_swiperPre.addEventListener("click", function() {
+						_that.pre()
+					});
+					_main.appendChild(_swiperPre);
+					_swiperEles.appendChild(_main);
+					this.options.eleMain = _swiperMain;
+					document.body.appendChild(_swiperEles);
+				};
+				setSwiperImgs() {
+					if(this.options.imgs.length > 0) {
+						let _imgsEles = document.createDocumentFragment();
+						this.options.imgs.forEach(function(v) {
+							let _swiperItems = document.createElement("div"),
+								_imgs = document.createElement("img");
+							_imgs.setAttribute("src", v);
+							_swiperItems.appendChild(_imgs);
+							_imgsEles.appendChild(_swiperItems);
+						});
+						this.options.eleMain.appendChild(_imgsEles);
+						//	this.options._swiperTransformX = -this.options._swiperWidth;
+						this.doSwper();
+					}
+				};
+				doSwper() {
+					this.options.eleMain.style.cssText = "transform:translateX(" + (this.options._swiperTransformX) + "px);transition:all .5s";
+				};
+				reduction() {
+					let _transLength = this.options._swiperIndex == 0 ? (-this.options.imgs.length * this.options._swiperWidth) : 0;
+					this.options.eleMain.style.cssText = "transform:translateX(" + _transLength + "px);transition:none 0s";
+				};
+				next() {
+					this.options._swiperIndex++;
+					if(this.options._swiperIndex == this.options.imgs.length) this.reduction(), this.options._swiperIndex = 0, this.options._swiperTransformX = 0;
+					else {
+						this.options._swiperTransformX -= this.options._swiperWidth;
+						this.doSwper();
+					}
+
+				};
+				pre() {
+					console.log("上一个");
+					if(this.options._swiperIndex == 1)
+						this.reduction();
+					this.options._swiperTransformX += this.options._swiperWidth;
+					this.options._swiperIndex--;
+					this.doSwper();
+				}
+			};
+			const s = new lisuSwipoer({
+				imgs: ["//img.alicdn.com/imgextra/i3/179/O1CN01c7eRtb1DC1NdGvhNM_!!179-0-luban.jpg_q100.jpg", "//img.alicdn.com/tps/i4/TB1j1.kspzqK1RjSZFCSuvbxVXa.jpg"]
+			});
+
+			var transWidth = document.documentElement.clientWidth,
+				index = 2,
+				interVal = null,
+				isFinish = true,
+				orginTran = -transWidth; //初始位于第二个的位置
+			//初始让图片位于第二个的位置
+			$("#item").css({
+				"transform": "translateX(" + (-transWidth) + "px)",
+				"transition": "all .5s"
+			});
+
+			function next() {
+				if(!isFinish) return;
+				isFinish = false;
+				index++; //下一个
+				console.log(index, "next");
+				orginTran -= transWidth; //左移一个
+				if(interVal) window.clearInterval(interVal);
+				$("#item").css({
+					"transform": "translateX(" + orginTran + "px)",
+					"transition": "all .5s"
+				});
+				if(index == 6) {
+					//动画结束
+					interVal = setTimeout(function() {
+						//最后一个就变为第一个
+						orginTran = 0;
+						index = 1;
+						$("#item").css({
+							"transform": "translateX(0)",
+							"transition": "none .5s"
+						});
+					}, 500);
+				}
+				setTimeout(function() {
+					isFinish = true;
+				}, 500)
+			}
+
+			function pre() {
+				if(!isFinish) return;
+				isFinish = false;
+				index--;
+				orginTran += transWidth; //右移一个
+				let t = 0,
+					c = "all .5s";
+				console.log(index);
+				if(interVal) window.clearInterval(interVal);
+				$("#item").css({
+					"transform": "translateX(" + orginTran + "px)",
+					"transition": c
+				});
+				if(index == 1) {
+					setTimeout(function() {
+						orginTran = (-5 * transWidth);
+						index = 5;
+						$("#item").css({
+							"transform": "translateX(" + orginTran + "px)",
+							"transition": "none .5s"
+						});
+					}, 500)
+				}
+				setTimeout(function() {
+					isFinish = true;
+				}, 500)
+			}
+
+			function hello(name = "小明") {
+				console.log(name);
+			}
+			hello();
+			hello("小明的滴滴");
+
+			var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+				b = a.slice(1);
+			console.log(b);
+		</script>
+	</body>
+
+</html>

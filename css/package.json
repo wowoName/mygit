@@ -1,0 +1,15 @@
+{
+	"private": true,
+	"dependencies": {
+		"autoprefixer": "^9.3.1"
+	},
+	"browserslist": [
+		">1%",
+		"ie >8",
+		"last 2 versions",
+		"iOS >= 7",
+		"Android > 4.1",
+		"Firefox >= 20",
+		"Safari >= 6"
+	]
+}

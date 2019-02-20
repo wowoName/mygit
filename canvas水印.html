@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>水印</title>
+		<style type="text/css">
+			.zindex {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+			
+			.textStyle {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.textStyle:hover {
+				cursor: wait;
+				color: #0000FF;
+			}
+			
+			
+			
+		</style>
+	</head>
+
+	<body>
+		
+
+		<div class="textStyle ">
+			你好啊
+		</div>
+		<script type="text/javascript">
+			var oCanvas = document.createElement("canvas"),
+				canvasWidth = document.documentElement.clientWidth,
+				canvasHeight = document.documentElement.clientHeight;
+			oCanvas.style.cssText = "position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: -1;";
+			oCanvas.setAttribute("width", canvasWidth);
+			oCanvas.setAttribute("height", canvasHeight);
+			document.getElementsByTagName("body")[0].appendChild(oCanvas);
+			var oGc = oCanvas.getContext('2d'),
+				//c重复绘制的img
+				waterMarkText = 'bitcom',
+				canvas = document.createElement('canvas'),
+				ctx = canvas.getContext('2d');
+
+			//图片水印
+			//			var img = new Image(),
+			//				imgSrc = ["img/chunjie.png", "img/qingming.jpg", "img/laodong.jpg", "img/duanwu.jpg", "img/zhongqiu.jpg", "img/guoqing.jpg"];
+			//			img.src = imgSrc[Math.ceil(Math.random() * (5 - 0) + 0)];
+			//			img.onload = function() {
+			//				//一排放置十张图片
+			//				let imgWidth = img.width,
+			//					imgHeight = img.height;
+			//				img.width = imgWidth;
+			//				img.height = imgHeight;
+			//				canvas.width = imgWidth + 10;
+			//				canvas.height = imgHeight + 10;
+			//
+			//				ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
+			//				var pat = oGc.createPattern(canvas, "repeat"); //在指定的方向上重复指定的元素  
+			//				oGc.fillStyle = pat;
+			//				oGc.fillRect(0, 0, canvasWidth, canvasHeight);
+			//			}
+			//w文字水印
+			canvas.width = canvas.height = 80; //水印大小
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+			ctx.globalAlpha = 0.8; //透明度
+			ctx.font = '16px Microsoft Yahei';
+			ctx.fillStyle = "rgba(30,144,255,.5)"; //颜色
+			ctx.translate(50, 50);
+			ctx.rotate(-Math.PI / 4);
+			ctx.fillText(waterMarkText, 0, 0);
+
+			var pat = oGc.createPattern(canvas, "repeat"); //在指定的方向上重复指定的元素  
+			oGc.fillStyle = pat;
+			oGc.fillRect(0, 0, canvasWidth, canvasHeight);
+		</script>
+	</body>
+
+</html>

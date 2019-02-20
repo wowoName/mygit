@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>promise</title>
+		<script type="text/javascript">
+			/*class People {
+																																					constructor(name) {
+																																						this.name = name;
+																																					};
+																																					setName(name) {
+																																						this.name = name;
+																																					}
+																																					cook() {
+																																						console.log(this.name + "下班了");
+																																						let p = new Promise(function(resolve, project) {
+																																							setTimeout(function() {
+																																								console.log("到了公交站");
+																																								resolve("等公交车");
+																																							}, 1000);
+
+																																						});
+																																						return p;
+																																					}
+																																					eat(data) {
+																																						console.log(data);
+																																						let p = new Promise(function(resolve, project) {
+																																							setTimeout(function() {
+																																								console.log("606公交车来了！");
+																																								resolve("上车了");
+																																							}, 1000)
+																																						});
+																																						return p;
+																																					}
+																																					wash(data) {
+																																						console.log(data);
+																																						let p = new Promise(function(resolve, project) {
+																																							setTimeout(function() {
+																																								console.log("公交车快速行进中...！");
+																																								resolve("到站,下车了");
+																																							}, 1000)
+																																						});
+																																						return p;
+																																					}
+																																				}
+																																				People.prototype.age;
+																																				const xm = new People();
+																																				xm.setName("小mi");
+																																				xm.age = 10;
+																																				xm.cook().then(xm.eat).then(xm.wash).then(function(lastData) {
+																																					console.log(lastData);
+																																				});*/
+			/*function niao() {
+				console.log("开始问候");
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						resolve("你好")
+					}, 1000)
+				});
+			}
+
+			function dengdai(data) {
+				console.log(data);
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("听见了");
+						reject("---");
+					}, 5000)
+				});
+
+			}
+
+			function resay() {
+				console.log("你也好");
+			}
+			niao().then(dengdai).then(resay).catch(function(data) {
+				console.log("拒绝"+data);
+			});*/
+
+			function a1() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("哈哈哈1");
+						resolve(true);
+					}, 2000)
+				});
+			}
+
+			function b1() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("哈哈哈2");
+						resolve(true);
+					}, 2000)
+				});
+			}
+
+			function c1() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("哈哈哈3");
+						resolve("哈哈哈3");
+					}, 2000)
+				});
+			}
+
+			function d1(data) {
+				console.log(data);
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("哈哈哈4");
+						resolve(true);
+					}, 2000)
+				});
+			}
+			a1().then(b1).then(c1).then(d1);
+			var len = "20181211163520ffff";
+			var r = len.substr(0, 14).replace(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})$/, "$1-$2-$3 $4:$5:$6");
+			console.log(r);
+		</script>
+
+		<style>
+			input[readonly] {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="text" />
+		<input type="text" readonly="" />
+	</body>
+
+</html>

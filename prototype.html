@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>原型链</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function Animal(name) {
+				this.name = name || "好好";
+				this.sayHello = function() {
+					console.log("你好", this.name,this.sex);
+				}
+			};
+			Animal.prototype.sex = "nv";
+			Animal.prototype.say = function() {
+				console.log("protoType,say", this.name,this.sex);
+			}
+			const dog = new Animal("小狗");
+			dog.sayHello();
+			dog.say();
+
+			console.log(Animal.hasOwnProperty("sex"));
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="new_fil1e.js" type="text/javascript" charset="utf-8"></script>
+
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			.zhanshi,
+			.daiding {
+				width: 50%;
+				height: 300px;
+				border: 1px solid #DEDEDE;
+				margin: 50px auto;
+			}
+			
+			.daiding div,
+			.zhanshi div {
+				position: relative;
+				float: left;
+				margin: 5px;
+				padding: 4px 10px;
+				border-radius: 3px;
+				border: 1px solid transparent;
+				color: #FFFFFF;
+				background-color: #0178E5;
+				transition: all 2s;
+			}
+			
+			.active {
+				animation: ddd .5s 1;
+			}
+			
+			@keyframes ddd {
+				from {
+					transform: rotateX(0deg);
+					-webkit-transform: rotateX(0deg);
+					-ms-transform: rotateX(0deg);
+				}
+				to {
+					transform: rotateX(90deg);
+					-webkit-transform: rotateX(90deg);
+					-ms-transform: rotateX(90deg);
+				}
+			}
+			
+			.active1 {
+				animation: ddd1 1s 1;
+				background-color: #FFFFFF!important;
+				color: #333333!important;
+				border: 1px solid #ECECEC!important;
+			}
+			
+			@keyframes ddd1 {
+				from {
+					transform: rotateX(90deg);
+					-webkit-transform: rotateX(90deg);
+					-ms-transform: rotateX(90deg);
+				}
+				to {
+					transform: rotateX(0deg);
+					-webkit-transform: rotateX(0deg);
+					-ms-transform: rotateX(0deg);
+				}
+			}
+			
+			.lisu-search {
+				width: 180px;
+			}
+			
+			.remove {
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+				background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABcElEQVRYR+2Vz0rDQBDGvyHJIwg9FBT04EEJZffSYtpX0DcV8QVsRT10E4oEPHhQ6EFR8CQE+mdkShZKEbNphb0ktyS78/3m25kdgueHPOujAWgcaByodGA8Hl8COAVwrrV+dGlbY8wRgCsAn0qp/l97KgGMMTcAJMgXMw+qIEScmUdE1GLmXGt9shNAmqZ7y+VySETHJURPa/30W9Asyw4Wi8W9iAN4DcPwLI7j6U4AslkgmPkOgFj7wcz9TYhSXDJvM/M0iqJulbjErjwCS5/neasoipGFANBTSj3L/8lk0p7NZpL5SjwIgqTT6by41IszgAQrIR4A7DPzGxElYRgW8/n81n4LgqDrKl7LAZuNZLsuCOCbiA4tkHXFJfutADYtl/dtxf8NQApzvSZcs98KwOsReC1Cr23o9SLyfhUbY4YAEm/DqBzHMtEuqiahbb9yIl4T0btSarDzMKrT13XX1poFdYO7rG8AGgcaB34AxngkMHgq/wwAAAAASUVORK5CYII=") no-repeat center center;
+				background-size: 16px 16px;
+			}
+			
+			@keyframes lisuError {
+				0% {
+					-webkit-box-shadow: 0 0 2px #FF6347;
+					box-shadow: 0 0 2px #FF6347;
+				}
+				100% {
+					-webkit-box-shadow: 0 0 8px #FF6347;
+					box-shadow: 0 0 8px #FF6347;
+				}
+			}
+			
+			.lisu-input {
+				border-color: #FF6347 !important;
+				-webkit-box-shadow: 0 0 3px #FF6347;
+				box-shadow: 0 0 3px #FF6347;
+			}
+		</style>
+	</head>
+
+	<body>
+		<i class="remove">
+			
+		</i>
+		<div class="index">
+			sdfdsfd
+		</div>
+
+		<div class="lisu-search">
+			<input type="text" class="search-input" />
+			<i>搜索</i>
+		</div>
+
+		<a href="http://api.map.baidu.com/marker?location=120,43&title=青岛&content=''&output=html">百度地图</a>
+		<input type="button" value="移动" onclick="setAni('移动')" />
+		<input type="button" value="大非" onclick="setAni('大非')" />
+		<input type="button" value="其他" onclick="setAni('其他')" />
+		<div>
+			<div class="zhanshi lisu-input">
+
+				<div style="width: 100px;height: 100px;background-color: royalblue;margin-top: 20px;"></div>
+			</div>
+			<div class="daiding" id="ddd">
+				<div>大是移动大非0</div>
+				<div>大是大非31</div>
+				<div>大是移动大非1</div>
+				<div>移动第一个 </div>
+				<div>大是大非6</div>
+				<div>其他</div>
+				<div>移动第四个</div>
+				<div>大是大非2</div>
+				<div>其他</div>
+				<div>大是大非4</div>
+				<div>大是大非5</div>
+				<div>其他</div>
+				<div>大是大非1</div>
+				<div>大是大非2</div>
+				<div>其他</div>
+				<div>大是大非4</div>
+				<div>大是大非5</div>
+				<div>移动第三个</div>
+				<div>大是大非6</div>
+				<div>其他</div>
+				<div>大是大非31</div>
+				<div>移动第wu个</div>
+				<div>其他</div>
+				<div>移动第6个</div>
+			</div>
+		</div>
+		</div>
+
+		<div onclick="getTime()">ddd</div>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var a = [1, 2, 3, 4, 5, 6, 7],
+				jsona = {};
+			for(var i = 0; i < a.length; i++) {
+				jsona["u" + i] = i;
+			}
+
+			console.log(jsona);
+
+			function setAni(index) {
+				var parentEle = document.getElementById("ddd"),
+					$eles = parentEle.querySelectorAll("div"),
+					allChildren = [];
+				if(parentEle.querySelectorAll(".active1").length > 0 && parentEle.querySelectorAll(".active1")[0].innerHTML.indexOf(index) > -1)
+					return;
+				for(var i = $eles.length - 1; i >= 0; i--) {
+					var ele = $eles[i];
+					ele.classList.remove("active1");
+					if(ele.innerHTML.indexOf(index) > -1 && $eles[1] != $eles[i])
+						allChildren.push(ele);
+
+				};
+
+				for(var i = 0; i < allChildren.length; i++) {
+					(function(ele, i) {
+						ele.classList.add("active");
+						(function(ele) {
+							setTimeout(function() {
+								parentEle.insertBefore(ele, parentEle.children[0]);
+								ele.classList.add("active1");
+								ele.classList.remove("active");
+							}, 400);
+						})(ele);
+					})(allChildren[i], i)
+				}
+
+			}
+
+			var a = [{
+				"id": "000000",
+				"text": "平台",
+				"orgId": "000000",
+				"orgName": "平台",
+				"parentOrgId": "bite",
+				"orgDesc": "平台",
+				"addStaff": "admin",
+				"addTime": "2016-01-31 15:50:12",
+				"orgLevel": 0,
+				"orgArea": "崂山区",
+				"checked": false,
+				"projectCode": "000",
+				"projectName": "",
+				"children": [{
+					"id": "000001",
+					"text": "青岛运营",
+					"orgId": "000001",
+					"orgName": "青岛运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "user",
+					"addTime": "2016-08-11 16:08:20",
+					"orgLevel": 1,
+					"orgArea": "青岛市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": [{
+						"id": "000001_1",
+						"text": "崂山区",
+						"orgId": "000001_1",
+						"orgName": "崂山区",
+						"parentOrgId": "000001",
+						"orgDesc": "",
+						"addStaff": "admin",
+						"addTime": "2018-01-13 09:20:35",
+						"orgLevel": 2,
+						"orgArea": "青岛市",
+						"checked": false,
+						"projectCode": "001",
+						"projectName": "比特运营",
+						"children": []
+					}]
+				}, {
+					"id": "000002",
+					"text": "南京运营",
+					"orgId": "000002",
+					"orgName": "南京运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2016-08-11 16:09:02",
+					"orgLevel": 1,
+					"orgArea": "南京市",
+					"checked": false,
+					"projectCode": "014",
+					"projectName": "南京项目",
+					"children": []
+				}, {
+					"id": "000003",
+					"text": "上海运营",
+					"orgId": "000003",
+					"orgName": "上海运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2016-08-11 16:09:13",
+					"orgLevel": 1,
+					"orgArea": "上海市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000004",
+					"text": "杭州运营",
+					"orgId": "000004",
+					"orgName": "杭州运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2016-08-11 16:09:22",
+					"orgLevel": 1,
+					"orgArea": "杭州市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000005",
+					"text": "泰州运营",
+					"orgId": "000005",
+					"orgName": "泰州运营",
+					"parentOrgId": "000000",
+					"orgDesc": "泰州停车场",
+					"addStaff": "admin",
+					"addTime": "2016-08-11 16:09:27",
+					"orgLevel": 1,
+					"orgArea": "泰州市",
+					"checked": false,
+					"projectCode": "002",
+					"projectName": "未配置",
+					"children": [{
+						"id": "000005_01",
+						"text": "海陵区",
+						"orgId": "000005_01",
+						"orgName": "海陵区",
+						"parentOrgId": "000005",
+						"orgDesc": "泰州市海陵区",
+						"addStaff": "admin",
+						"addTime": "2016-08-11 16:49:54",
+						"orgLevel": 2,
+						"orgArea": "泰州市",
+						"checked": false,
+						"projectCode": "002",
+						"projectName": "未配置",
+						"children": []
+					}, {
+						"id": "000005_02",
+						"text": "高港区",
+						"orgId": "000005_02",
+						"orgName": "高港区",
+						"parentOrgId": "000005",
+						"orgDesc": "泰州市高港区",
+						"addStaff": "admin",
+						"addTime": "2016-08-11 16:50:46",
+						"orgLevel": 2,
+						"orgArea": "泰州市",
+						"checked": false,
+						"projectCode": "002",
+						"projectName": "未配置",
+						"children": []
+					}, {
+						"id": "000005_03",
+						"text": "姜堰区",
+						"orgId": "000005_03",
+						"orgName": "姜堰区",
+						"parentOrgId": "000005",
+						"orgDesc": "泰州市姜堰区",
+						"addStaff": "admin",
+						"addTime": "2016-08-11 16:51:38",
+						"orgLevel": 2,
+						"orgArea": "泰州市",
+						"checked": false,
+						"projectCode": "002",
+						"projectName": "未配置",
+						"children": []
+					}, {
+						"id": "000005_04",
+						"text": "医药高新区",
+						"orgId": "000005_04",
+						"orgName": "医药高新区",
+						"parentOrgId": "000005",
+						"orgDesc": "泰州市医药高新区",
+						"addStaff": "admin",
+						"addTime": "2016-08-11 16:52:17",
+						"orgLevel": 2,
+						"orgArea": "泰州市",
+						"checked": false,
+						"projectCode": "002",
+						"projectName": "未配置",
+						"children": []
+					}]
+				}, {
+					"id": "000006",
+					"text": "金华运营",
+					"orgId": "000006",
+					"orgName": "金华运营",
+					"parentOrgId": "000000",
+					"orgDesc": "金华市城市级停车场",
+					"addStaff": "admin",
+					"addTime": "2016-08-11 16:09:33",
+					"orgLevel": 1,
+					"orgArea": "金华市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000007",
+					"text": "北京运营",
+					"orgId": "000007",
+					"orgName": "北京运营",
+					"parentOrgId": "000000",
+					"orgDesc": "北京运营",
+					"addStaff": "admin",
+					"addTime": "2016-10-09 17:30:26",
+					"orgLevel": 1,
+					"orgArea": "北京市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000008",
+					"text": "东莞运营",
+					"orgId": "000008",
+					"orgName": "东莞运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2016-10-10 17:09:44",
+					"orgLevel": 1,
+					"orgArea": "东莞市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000009",
+					"text": "常熟运营",
+					"orgId": "000009",
+					"orgName": "常熟运营",
+					"parentOrgId": "000000",
+					"orgDesc": "常熟市",
+					"addStaff": "admin",
+					"addTime": "2016-11-20 22:14:05",
+					"orgLevel": 1,
+					"orgArea": "苏州市",
+					"checked": false,
+					"projectCode": "003",
+					"projectName": "未配置",
+					"children": []
+				}, {
+					"id": "000010",
+					"text": "徐州运营",
+					"orgId": "000010",
+					"orgName": "徐州运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-02-08 18:09:38",
+					"orgLevel": 1,
+					"orgArea": "徐州市",
+					"checked": false,
+					"projectCode": "006",
+					"projectName": "未配置",
+					"children": []
+				}, {
+					"id": "000011",
+					"text": "成都运营",
+					"orgId": "000011",
+					"orgName": "成都运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-02-10 08:57:20",
+					"orgLevel": 1,
+					"orgArea": "成都市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000012",
+					"text": "福州运营",
+					"orgId": "000012",
+					"orgName": "福州运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-02-10 19:07:40",
+					"orgLevel": 1,
+					"orgArea": "福州市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000013",
+					"text": "威海运营",
+					"orgId": "000013",
+					"orgName": "威海运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-03-13 11:42:50",
+					"orgLevel": 1,
+					"orgArea": "威海市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000014",
+					"text": "郑州运营",
+					"orgId": "000014",
+					"orgName": "郑州运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-03-15 14:04:10",
+					"orgLevel": 1,
+					"orgArea": "郑州市",
+					"checked": false,
+					"projectCode": "004",
+					"projectName": "未配置",
+					"children": []
+				}, {
+					"id": "000015",
+					"text": "日照运营",
+					"orgId": "000015",
+					"orgName": "日照运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-03-29 17:07:57",
+					"orgLevel": 1,
+					"orgArea": "日照市",
+					"checked": false,
+					"projectCode": "007",
+					"projectName": "未配置",
+					"children": []
+				}, {
+					"id": "000016",
+					"text": "重庆运营",
+					"orgId": "000016",
+					"orgName": "重庆运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-04-17 15:55:37",
+					"orgLevel": 1,
+					"orgArea": "重庆市",
+					"checked": false,
+					"projectCode": "005",
+					"projectName": "未配置",
+					"children": []
+				}, {
+					"id": "000017",
+					"text": "南充运营",
+					"orgId": "000017",
+					"orgName": "南充运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-05-30 14:29:59",
+					"orgLevel": 1,
+					"orgArea": "南充市",
+					"checked": false,
+					"projectCode": "010",
+					"projectName": "南充项目",
+					"children": []
+				}, {
+					"id": "000018",
+					"text": "清远运营",
+					"orgId": "000018",
+					"orgName": "清远运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-09-12 14:49:02",
+					"orgLevel": 1,
+					"orgArea": "清远市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000019",
+					"text": "贵阳修文",
+					"orgId": "000019",
+					"orgName": "贵阳修文",
+					"parentOrgId": "000000",
+					"orgDesc": null,
+					"addStaff": "admin",
+					"addTime": "2017-11-07 09:07:11",
+					"orgLevel": 1,
+					"orgArea": "贵阳修文",
+					"checked": false,
+					"projectCode": "011",
+					"projectName": "贵阳修文",
+					"children": []
+				}, {
+					"id": "000020",
+					"text": "验证组织机构，凌海森",
+					"orgId": "000020",
+					"orgName": "验证组织机构，凌海森",
+					"parentOrgId": "000000",
+					"orgDesc": "凌海森",
+					"addStaff": "admin",
+					"addTime": "2017-11-07 09:08:10",
+					"orgLevel": 1,
+					"orgArea": "上海市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000030",
+					"text": "青岛第二运营",
+					"orgId": "000030",
+					"orgName": "青岛第二运营",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2017-12-29 15:29:47",
+					"orgLevel": 1,
+					"orgArea": "青岛市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000033",
+					"text": "上海飞蛙",
+					"orgId": "000033",
+					"orgName": "上海飞蛙",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "admin",
+					"addTime": "2018-01-08 17:55:46",
+					"orgLevel": 1,
+					"orgArea": "上海市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": [{
+						"id": "000123",
+						"text": "某子公司",
+						"orgId": "000123",
+						"orgName": "某子公司",
+						"parentOrgId": "000033",
+						"orgDesc": "0000",
+						"addStaff": "fw-admin",
+						"addTime": "2018-01-22 19:30:41",
+						"orgLevel": 2,
+						"orgArea": "上海市",
+						"checked": false,
+						"projectCode": "001",
+						"projectName": "比特运营",
+						"children": []
+					}]
+				}, {
+					"id": "000034",
+					"text": "德阳运营",
+					"orgId": "000034",
+					"orgName": "德阳运营",
+					"parentOrgId": "000000",
+					"orgDesc": "成都宜泊",
+					"addStaff": "admin",
+					"addTime": "2018-05-03 17:35:09",
+					"orgLevel": 1,
+					"orgArea": "四川省",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": []
+				}, {
+					"id": "000090",
+					"text": "青岛比特运营",
+					"orgId": "000090",
+					"orgName": "青岛比特运营",
+					"parentOrgId": "000000",
+					"orgDesc": "青岛比特运营",
+					"addStaff": "admin",
+					"addTime": "2018-05-12 09:18:39",
+					"orgLevel": 1,
+					"orgArea": "青岛市",
+					"checked": false,
+					"projectCode": "001",
+					"projectName": "比特运营",
+					"children": [{
+						"id": "000091",
+						"text": "比特研发",
+						"orgId": "000091",
+						"orgName": "比特研发",
+						"parentOrgId": "000090",
+						"orgDesc": "比特研发",
+						"addStaff": "admin",
+						"addTime": "2018-05-12 09:23:10",
+						"orgLevel": 2,
+						"orgArea": "青岛市",
+						"checked": false,
+						"projectCode": "001",
+						"projectName": "比特运营",
+						"children": []
+					}, {
+						"id": "000092",
+						"text": "比特测试",
+						"orgId": "000092",
+						"orgName": "比特测试",
+						"parentOrgId": "000090",
+						"orgDesc": "比特测试",
+						"addStaff": "admin",
+						"addTime": "2018-05-12 09:23:39",
+						"orgLevel": 2,
+						"orgArea": "青岛市",
+						"checked": false,
+						"projectCode": "001",
+						"projectName": "比特运营",
+						"children": []
+					}]
+				}, {
+					"id": "015_77829195",
+					"text": "淄博张店",
+					"orgId": "015_77829195",
+					"orgName": "淄博张店",
+					"parentOrgId": "000000",
+					"orgDesc": "",
+					"addStaff": "system",
+					"addTime": "2018-08-30 09:31:18",
+					"orgLevel": 1,
+					"orgArea": "张店区",
+					"checked": false,
+					"projectCode": "015",
+					"projectName": "淄博张店",
+					"children": []
+				}, {
+					"id": "ce000010",
+					"text": "广元运营",
+					"orgId": "ce000010",
+					"orgName": "广元运营",
+					"parentOrgId": "000000",
+					"orgDesc": "广元城管局测试停车场",
+					"addStaff": "guangyuan",
+					"addTime": "2017-07-25 15:37:31",
+					"orgLevel": 1,
+					"orgArea": "广元市",
+					"checked": false,
+					"projectCode": "009",
+					"projectName": "未配置",
+					"children": []
+				}, {
+					"id": "cs_000001",
+					"text": "常熟保安公司",
+					"orgId": "cs_000001",
+					"orgName": "常熟保安公司",
+					"parentOrgId": "000000",
+					"orgDesc": "常熟市保安公司，常熟智慧停车总运营公司",
+					"addStaff": "admin",
+					"addTime": "2016-12-24 10:08:01",
+					"orgLevel": 1,
+					"orgArea": "常熟市",
+					"checked": false,
+					"projectCode": "003",
+					"projectName": "未配置",
+					"children": []
+				}, {
+					"id": "tz_000005",
+					"text": "泰州好停车",
+					"orgId": "tz_000005",
+					"orgName": "泰州好停车",
+					"parentOrgId": "000000",
+					"orgDesc": "泰州停车场",
+					"addStaff": "admin",
+					"addTime": "2016-08-27 12:29:45",
+					"orgLevel": 1,
+					"orgArea": "泰州市",
+					"checked": false,
+					"projectCode": "002",
+					"projectName": "未配置",
+					"children": [{
+						"id": "tz_0001",
+						"text": "泰州中原",
+						"orgId": "tz_0001",
+						"orgName": "泰州中原",
+						"parentOrgId": "tz_000005",
+						"orgDesc": "泰州中原物业公司",
+						"addStaff": "admin",
+						"addTime": "2016-08-27 17:38:37",
+						"orgLevel": 2,
+						"orgArea": "泰州市",
+						"checked": false,
+						"projectCode": "002",
+						"projectName": "未配置",
+						"children": []
+					}, {
+						"id": "tz_0002",
+						"text": "扬州深鸿基",
+						"orgId": "tz_0002",
+						"orgName": "扬州深鸿基",
+						"parentOrgId": "tz_000005",
+						"orgDesc": "扬州深鸿基物业",
+						"addStaff": "admin",
+						"addTime": "2016-08-27 17:39:05",
+						"orgLevel": 2,
+						"orgArea": "泰州市",
+						"checked": false,
+						"projectCode": "002",
+						"projectName": "未配置",
+						"children": []
+					}, {
+						"id": "tz_0003",
+						"text": "扬州润江",
+						"orgId": "tz_0003",
+						"orgName": "扬州润江",
+						"parentOrgId": "tz_000005",
+						"orgDesc": "扬州润江物业",
+						"addStaff": "admin",
+						"addTime": "2016-08-27 17:39:46",
+						"orgLevel": 2,
+						"orgArea": "泰州市",
+						"checked": false,
+						"projectCode": "002",
+						"projectName": "未配置",
+						"children": []
+					}]
+				}]
+			}];
+
+			function resetData(data) {
+				return data.reduce(function(pre, cur, arr) {
+					pre = pre.concat(cur);
+					if(cur.hasOwnProperty("children")) {
+						pre = pre.concat(resetData(cur.children));
+						delete cur.children;
+					}
+					return pre;
+				}, [])
+
+			}
+		</script>
+	</body>
+
+</html>

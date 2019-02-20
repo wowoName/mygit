@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.container-upload {
+				position: relative;
+				margin: 0 auto;
+				overflow: hidden;
+				width: 300px;
+				height: 300px;
+			}
+			
+			.container-upload:hover .img-title-upload {
+				margin-top: -50%;
+			}
+			
+			.container-upload>img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.img-title-upload {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, .5);
+				z-index: 1;
+				transition: .2s;
+				text-align: center;
+			}
+			
+			.title-con-upload {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+			}
+			
+			.title-opr-upload {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				margin: 10px;
+			}
+			
+			.container {
+				position: relative;
+				margin: 0 auto;
+				overflow: hidden;
+				width: 1200px;
+			}
+			
+			.container:hover .img-title {
+				margin-top: -603px;
+			}
+			
+			.img-title {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, .5);
+				z-index: 1;
+				transition: .2s;
+			}
+			
+			.title-con {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+			}
+			
+			.title-opr {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+			}
+			
+			.zoomImg {
+				display: none;
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .5);
+				z-index: 10;
+			}
+			
+			.imgMain {
+				position: relative;
+				top: 50%;
+				left: 50%;
+				max-height: 100%;
+				max-width: 100%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.imgMains {
+				width: 160px;
+				height: 160px;
+				overflow: auto;
+			}
+			
+			.polygonEle {
+				position: relative;
+				width: 182px;
+				height: 105px;
+				margin: 60px 5px;
+				background-color: rgba(0, 0, 0, .5);
+				float: left;
+				position: absolute;
+				left: 50%;
+				top: -51px;
+				transform: translate(-50%, -50%);
+				animation: zoomK 2s linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			.polygonEle::before {
+				content: "";
+				position: absolute;
+				width: 182px;
+				height: 105px;
+				background-color: rgba(0, 0, 0, .5);
+				transform: rotate(60deg);
+				z-index: 1;
+				animation: zoomK 2s linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			.polygonEle::after {
+				content: "";
+				position: absolute;
+				width: 182px;
+				height: 105px;
+				background-color: rgba(0, 0, 0, .5);
+				transform: rotate(-60deg);
+				z-index: 1;
+				animation: zoomK 2s linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			@keyframes zoomK {
+				0% {
+					background-color: #FFB6C1;
+				}
+				100% {
+					background-color: #DC143C;
+				}
+			}
+			
+			.polygonEle img {
+				position: absolute;
+				top: 5.5px;
+				left: 43.5px;
+				width: 102px;
+				height: 94px;
+			}
+			
+			.container-zz {
+				position: relative;
+				height: 1500px;
+				margin: 0 auto;
+				top: 100px;
+			}
+			
+			.zzEle {
+				height: 600px;
+				width: 600px;
+				overflow: hidden;
+			}
+			
+			.zzEle>img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.zzEleCenter {
+				margin-left: 102px;
+			}
+			
+			.polygonEle:nth-child(1) {
+				margin-top: 183px;
+			}
+			
+			.polygonEle:nth-child(2) {
+				margin-left: -182px;
+				margin-top: 112.5px;
+			}
+			
+			.polygonEle:nth-child(11) {
+				margin-left: 192px;
+				margin-top: 112.5px;
+			}
+			
+			.polygonEle:nth-child(3) {
+				margin-left: -370px;
+				margin-top: 160px;
+			}
+			
+			.polygonEle:nth-child(12) {
+				margin-left: 380px;
+				margin-top: 160px;
+			}
+			
+			.polygonEle:nth-child(4) {
+				margin-left: -558px;
+				margin-top: 207.5px;
+			}
+			
+			.polygonEle:nth-child(13) {
+				margin-left: 568px;
+				margin-top: 207.5px;
+			}
+			
+			.polygonEle:nth-child(5) {
+				margin-left: -657px;
+				margin-top: 368px;
+			}
+			
+			.polygonEle:nth-child(14) {
+				margin-left: 667px;
+				margin-top: 368px;
+			}
+			
+			.polygonEle:nth-child(6) {
+				margin-left: -580px;
+				margin-top: 540px;
+			}
+			
+			.polygonEle:nth-child(15) {
+				margin-left: 590px;
+				margin-top: 540px;
+			}
+			
+			.polygonEle:nth-child(7) {
+				margin-left: -450px;
+				margin-top: 679px;
+			}
+			
+			.polygonEle:nth-child(16) {
+				margin-left: 460px;
+				margin-top: 679px;
+			}
+			
+			.polygonEle:nth-child(8) {
+				margin-left: -320px;
+				margin-top: 819px;
+			}
+			
+			.polygonEle:nth-child(17) {
+				margin-left: 330px;
+				margin-top: 819px;
+			}
+			
+			.polygonEle:nth-child(9) {
+				margin-left: -186px;
+				margin-top: 955px;
+			}
+			
+			.polygonEle:nth-child(18) {
+				margin-left: 196px;
+				margin-top: 955px;
+			}
+			
+			.polygonEle:nth-child(10) {
+				margin-left: 0;
+				margin-top: 1015px;
+			}
+			
+			.polygonEle:nth-child(19) {
+				margin-left: 0;
+				margin-top: 628px;
+			}
+			
+			.polygonEle:nth-child(20) {
+				margin-left: -96px;
+				margin-top: 466px;
+			}
+			
+			.polygonEle:nth-child(21) {
+				margin-left: 93px;
+				margin-top: 466px;
+			}
+			
+			.heart-shape {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				-webkit-transform: rotate(45deg);
+				-moz-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				-o-transform: rotate(45deg);
+				transform: rotate(45deg);
+				background-color: rgba(250, 184, 66, 1);
+			}
+			
+			.heart-shape:before,
+			.heart-shape:after {
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				content: '';
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				-o-border-radius: 50%;
+				border-radius: 50%;
+				background-color: rgba(250, 184, 66, 1);
+			}
+			
+			.heart-shape:before {
+				bottombottom: 0px;
+				left: -90px;
+			}
+			
+			.heart-shape:after {
+				top: -90px;
+				rightright: 0px;
+			}
+			
+			.bgEle {
+				width: 200px;
+				height: 200px;
+				margin: 10px auto;
+				border: 1px solid red;
+				box-shadow: 0px 0px 10px #20B2AA;
+				animation: bgAnimation 4s linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			@keyframes bgAnimation {
+				0% {
+					border: 1px solid #FFB6C1;
+					box-shadow: 0px 0px 10px #9932CC;
+				}
+				25% {
+					border: 1px solid #FFB6C1;
+					box-shadow: 0px 0px 10px #6A5ACD;
+				}
+				50% {
+					border: 1px solid #FFB6C1;
+					box-shadow: 0px 0px 10px #00FA9A;
+				}
+				75% {
+					border: 1px solid #FFB6C1;
+					box-shadow: 0px 0px 10px #00FF00;
+				}
+				100% {
+					border: 1px solid #20B2AA;
+					box-shadow: 0px 0px 10px #F08080;
+				}
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<input type="file" name="" id="fuHeadPhoto" value="" onchange="PreviewImage(this,'imgHeadPhoto','divPreview')" />
+
+		<div class="container-upload zzEle-upload" style="">
+			<img src="vue/epark/src/assets/logo.png" id="imgHeadPhoto" class="imgMains" />
+			<div class="img-title-upload">
+				<img src="img/eye.png" class="title-opr-upload" />
+				<img src="img/edit.png" class="title-opr-upload" />
+			</div>
+		</div>
+
+		<div class="bgEle">
+
+		</div>
+
+		<div class="container-zz" style="display: none;">
+			<div class="polygonEle ">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+
+			<div class="polygonEle">
+				<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" style="z-index: 4;" />
+			</div>
+		</div>
+		<div id="dddd" class="container">
+			<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" class="imgMains" data-name="好" />
+			<img src="//gw.alicdn.com/bao/uploaded/i2/2640814067/TB1F8cuyWSWBuNjSsrbXXa0mVXa_!!0-item_pic.jpg" class="imgMains" data-name="图" />
+			<img src="//gw.alicdn.com/bao/uploaded/i1/6000000000330/TB2ziv5t4WYBuNjy1zkXXXGGpXa_!!6000000000330-0-at.jpg" class="imgMains" data-name="片" /><img src="btSlider///img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" class="imgMains" data-name="好" />
+			<img src="//gw.alicdn.com/bao/uploaded/i1/2785170885/TB2aAlupiCYBuNkSnaVXXcMsVXa_!!2785170885-0-item_pic.jpg" class="imgMains" data-name="图" />
+			<img src="//gw.alicdn.com/bao/uploaded/i2/2030495828/TB1WH_ubMDD8KJjy0FdXXcjvXXa_!!0-item_pic.jpg" class="imgMains" data-name="片" />
+			<img src="img/2.png" />
+		</div>
+
+		<div class="container zzEle" style="">
+			<img src="//img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" alt="" class="lisuImg" />
+			<div class="img-title">
+				<div class="title-con">
+					<img src="img/eye.png" class="title-opr" />
+					<img src="img/edit.png" class="title-opr" />
+				</div>
+			</div>
+		</div>
+
+		<div class="zoomImg">
+			<img src="btSlider///img1.gtimg.com/ninja/2/2018/08/ninja153325560637741.jpg" class="imgMain" />
+		</div>
+
+		<input type="button" name="" id="" value="新增" onclick="addImg()" />
+
+		<script type="text/javascript">
+			"use strict";
+			$.fn.extend({
+				liusZoomOpt: {
+					//图片的样式
+					lisuImgStyle: 'position: relative;top: 50%;left: 50%;transform: translate(-50%, -50%);cursor:move; padding: 4px;background-color: #ffffff;border: 1px solid #ddd; border-radius: 4px;user-select: none;height:50%',
+					lisuMove: false, //移动标记
+					lisuX: "",
+					lisuY: "", //鼠标离控件左上角的相对位置
+					imgIndex: 0, //当前显示的图片的索引
+					liusTarget: null, //放大的图片dom
+					closeImg: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADaUlEQVR4Xu2b3XHUMBCAV/IrGUIHUEHikV6B0EGoAOggHRA6IBVwqYB0QIBXeUwqIHQQhrxaYva4m7lcbOt3JTE5P/tH32d5tZJXDB74wR44P+wE7HrAAzcw+wkopd4AwAlj7BAAbgDggnP+oW3b6xq99X3/VGv9HgCOAWDfGPMDAD5KKc+n2jspoOu6TwDwduTCG875q7Zt8ebVHH3fH2qtvyD4SKMWQoh3Y40dFaCUOmaMfZ6hq0qCBX6JYYx5LaW82GYaFdB13SUAvLS83iokuMCvOL4KIY5cBRjHvl1Uggc84twIIZ64CsDv+6BmCZ7wiHIlhMBgfueYigELxhiOAK5H1p4QAI8cZ0KIEycBfd/vD8NwzRh77GoAu1iO0SEQ/hfn/LBtWxzK7T0Az8AHDcNwWZOEEHhjzO+maY6mhu3ZRKgmCRTw+KKtk6EaJFDBOwko/TlQwjsLKCWBGt5LQG4JOeC9BeSSkAs+SAC1hJzwwQKoJOSGjxKQWkIJ+GgBqSSUgk8iIFYCXj+zkjM6FbGltx7zF3sm6HqzkIzRGPOHsWUyuuf6nJTwyXrAuvEhEpaNYAyXrKwOUsMnFxDxOVglUMCTCKCQQAVPJiClBEp4UgEpJFDDkwvYkPCdMfbIGuXunnDLOX9O/QPGuiDi2eh7p6+SnG/GmL3VkOd0Sxwim6Z58V8L2MzwEF5rvYz2Hgf5QqtXazwavlxU3c7wapRAImAut69NQnIBLhObmiQkFeACv/6MapGQTIAP/EYsucU5gOcQmTQwJhEQAr9OclBGyT9Q0QJi4NdjfOAsMklPiBKQAj5yKh0tIVhASviSEoIEUMCXkuAtgBK+hAQvATngc0twFpATPqcEJwEl4HNJsAooCZ9DgrVEpuRPi83pN1WyNCmghje/vf5AIWFUAJbJaa1/ThQej66L5FjAjFhoxYzxmXOZnFLKq1AyF3xkTHAvlFRK9as9AtZVsNzwoRJw74CUst0GmqoWt/+o+1eCPluEaLUXeYJPTMC2Sinv7SUILpcvDR/QE9zL5W0bJmqB95HgtWECbzwVCGuDd5FgjDmXUo5t/5kvkOi6Di/CEvMDBMdNU03TnNa8aWoYhlPcNLUq8r7CTVNCiMVUuLGmwpFxqvrLdwKqf0XEDdz1AGLB1d/+LzBBwm4IDBTkAAAAAElFTkSuQmCC",
+					reductionImg: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADpklEQVR4Xu2b3VXbMBTHdeUBmg0aJihGfodOUDpBywSlExQmaJgAOkHDBCTv0lGYoBmBDmDdnuujcJImQVcKsWMbvUYf9/+TLN8PB0TPG/Rcv3gD8HYCdiRgrT0uy/KDEGIgpZydnJxMd5yy1uHJj4C1dlCW5S0AnC9bjIiTLMsu8jyf16okcbEkAF78AwAcb1oXEWdFUeSJNtU6LBpASPyS9d+VUqNa1SQsFgUgQjyZMlVKnSXYVOsQNoBI8d0CkCBeIOKvoii+1rqdCYsFT0CKeLJDSvkxz/NJgk21DnkRQKp4IcSNUuqyViWJi20FkCq+LUd/wWsjgL6IJwhrAPokfg1A38SvAOij+GcAqeJpAgp+Ei/gpGEAMBNCPFXGA0x2jT6rO0BrTYHNwbut24gh4lgIMc6y7D7P8woOt4Ex5koI8YM74MD7kfiRlPKGC4IA/BFCDA9cWKx5FQil1HVoIAHAUKe2/k6Phk/ObH0sOg3AX9IzD4Euz7UGWusxAHxq6y4z7X7ywdkaBKCkpnPOMidqc7e5lDL//3KsXoPGGIrbb9usjmP7plzlcyyQCgER771zwrHhVfog4tD7Le8TJlwJ1VeCoUQIW5+vBOOihviaxCUAfIkZKKU8WqTt16LBtkEg4f4eI2+QdSKWcxYb8wEthTBwzlFcQlWqYFucgq0ZoR5AqO6CF3OCLYVAtcoJALwLHIO5UuoomBVOgdB0aYwb4JFfEASwg5/QWGnM5zfmjFNwzQKQAoH8g6IoVirHwZvpFTswXfwpG0AChEZrg8xHNw5ADISm6wPW2jPn3EPoIow6AYvJOHSbLo0xAaR/JBWA0HhpbO8AFi5oWZZXS/mEKSKOiqIgt7TRxgQQfwc0qipicWMMFWd/BoZ0F4DW2m77hmkBpQrlI6C2pqu1duico2x3qF10EoDW+o6TI6CIsHMAtNbnAPA7tPVCiEel1HGnAPjECDk/AwaAKlbpDAD/2qOdD4pHxL9Zlg0pQ9x6ABT5Oee+CSGoxslt10qpqn9rAfiE6CkA0PueXdtc3n02AGPMCBFZuTbuFuzSz7/fg0d90xqI+HnZU2WdAGMMJRtPdzH6QMauxSi9AbAtQdMXAI9SyrNNH010HkAoMdN1ABdKqbuX7p9OAqDnPcuyS87fdroGYCqlvIr5Sr31AHx5fiylnHB2/P/HgQuAPqBge1v7fOeTUD//PEVwEoB9Cmp6btYJaNrIfa7/BmCfdNsw9z/RwB/5R3pchwAAAABJRU5ErkJggg=='
+				},
+				//点击图片放大
+				zoomEparkImg: function() {
+					var that = this;
+					$(this).on("click", function(event) {
+						if($(event.target).closest("#lisuZoomImg").length != 0) return;
+						//判断图片是否存在
+						var lisuImgSrc = $(this).prop("src");
+						//图片路径错误
+						if(!that.lisuHasImgSrc(lisuImgSrc)) return;
+						that.liusZoomOpt.liusTarget.setAttribute("style", that.liusZoomOpt.lisuImgStyle);
+						that.liusZoomOpt.liusTarget.setAttribute("src", lisuImgSrc);
+						$("body").find("#lisuZoomImg").fadeIn();
+					});
+				},
+				initZoomImg: function() {
+					this.liusZoomOpt.imgIndex = 0;
+					//添加放大的事件
+					this.zoomEparkImg();
+					//创建显示组件
+					this.lisuCreateDom();
+					//初始化缩放事件(通过缩放图片本身 以及遮罩层)
+					this.changeImgType(document.getElementById("lisuImg"));
+					this.changeImgType(document.getElementById("lisuZoomImg"));
+				},
+				//判断图片路径是否正确
+				lisuHasImgSrc: function(pathImg) {
+					var ImgObj = new Image();
+					ImgObj.src = pathImg;
+					if(ImgObj.fileSize > 0 || (ImgObj.width > 0 && ImgObj.height > 0)) {
+						if(ImgObj.height > (document.documentElement.clientHeight) / 2)
+							this.liusZoomOpt.lisuImgStyle = this.liusZoomOpt.lisuImgStyle.substr(0, this.liusZoomOpt.lisuImgStyle.lastIndexOf(":")) + ":50%;";
+						else this.liusZoomOpt.lisuImgStyle = this.liusZoomOpt.lisuImgStyle.substr(0, this.liusZoomOpt.lisuImgStyle.lastIndexOf(":")) + ":auto;";
+						return true;
+					} else {
+						return false;
+					}
+				},
+				changeImgType: function(dom) {
+					var that = this;
+					this.domMouseWheelEvent()(dom, "mousewheel", function(event) {
+						if(event.delta > 0) that.lisuChangeImgSize(true, that); // 上  放大
+						else that.lisuChangeImgSize(false, that); //下  缩小
+					});
+				},
+				//创建显示图片的dom
+				lisuCreateDom: function(imgSrc) {
+					var that = this;
+					//判断是否已经存在
+					if($("body").find("#lisuZoomImg").length == 0) {
+						var thisStyle = 'display:none;position: fixed;width: 100%;height: 100%;top: 0;eft: 0;background-color: rgba(0, 0, 0, .5);z-index: 5000',
+							lisuOPClose = "width:30px;height:30px;position:absolute;top:30px;left:100%;margin-left:-100px;z-index:5001;cursor:pointer;user-select: none;",
+							lisuOPReduce = "width:30px;height:30px;position:absolute;top:100px;left:100%;margin-left:-100px;z-index:5001;cursor:pointer;user-select: none;",
+							lisuHtml = '<div id="lisuZoomImg"  style="' + thisStyle + '"> <img src="' + that.liusZoomOpt.closeImg + '" style="' + lisuOPClose + '" alt="关闭" title="关闭"/>  <img src="' + that.liusZoomOpt.reductionImg + '" class="lisuREduce" style="' + lisuOPReduce + '" alt="还原" title="还原"/><img src="' + imgSrc + '"  id="lisuImg" style="' + this.liusZoomOpt.lisuImgStyle + '" /></div>';
+						$("body").append(lisuHtml);
+						//拖拽 事件
+						$("body #lisuImg").lisuDraggable();
+					} else {
+						$("body").find("#lisuImg").prop("src", imgSrc);
+					}
+					//点击遮罩层关闭
+					$("body").find("#lisuZoomImg").on("click", function(event) {
+						if($(event.target).closest("#lisuImg").length == 0) $("body").find("#lisuZoomImg").fadeOut(200);
+					});
+					//还原
+					$("body").find(".lisuREduce").on("click", function(event) {
+						that.lisuStopEvent(event);
+						document.getElementById("lisuImg").setAttribute("style", that.liusZoomOpt.lisuImgStyle);
+
+					});
+					that.liusZoomOpt.liusTarget = $("body").find("#lisuImg")[0];
+
+				}, //修改图片的大小[true 放大 fale缩小]
+				lisuChangeImgSize: function(type, that) {
+					if($("body").find("#lisuImg").length == 0) return;
+					var lisuClientW = parseInt(that.liusZoomOpt.liusTarget.width),
+						lisuClientH = parseInt(that.liusZoomOpt.liusTarget.height);
+					if(!type && lisuClientW * 0.95 < 100) return;
+					this.liusZoomOpt.liusTarget.style.width = (type ? lisuClientW * 1.05 : lisuClientW * 0.95) + "px";
+					this.liusZoomOpt.liusTarget.style.height = (type ? lisuClientH * 1.05 : lisuClientH * 0.95) + "px";
+				},
+				//mouserwheel事件 兼容火狐
+				lisuMouseWheel: function(event) {
+					var type = event.type;
+					if(type === 'DOMMouseScroll' || type === 'mousewheel')
+						event.delta = (event.wheelDelta) ? event.wheelDelta / 120 : -(event.detail || 0);
+					if(event.srcElement && !event.target)
+						event.target = event.srcElement;
+					if(!event.preventDefault && event.returnValue !== undefined) {
+						event.preventDefault = function() {
+							event.returnValue = false;
+						}
+					}
+					return event;
+				},
+				//鼠标滚轮事件
+				domMouseWheelEvent: function(dom, type, fn) {
+					var that = this;
+					if(window.addEventListener) {
+						return function(el, type, fn, capture) {
+							if(type === 'mousewheel' && document.mozFullScreen !== undefined) type = "DOMMouseScroll";
+							el.addEventListener(type, function(event) {
+								that.lisuStopEvent(event);
+								fn.call(this, that.lisuMouseWheel(event));
+							}, capture || false);
+						}
+					} else if(window.attachEvent) {
+						return function(el, type, fn, capture) {
+							el.attachEvent("on" + type, function(event) {
+								that.lisuStopEvent(event);
+								fn.call(el, that.lisuMouseWheel(event));
+							});
+						}
+					}
+				},
+				// 拖拽的方法
+				lisuDraggable: function() {
+					var that = this;
+					$(this).mousedown(function(event) {
+						that.lisuStopEvent(event);
+						that.liusZoomOpt.lisuMove = true;
+						that.liusZoomOpt.lisuX = event.pageX - parseInt($(this).css("left"));
+						that.liusZoomOpt.lisuY = event.pageY - parseInt($(this).css("top"));
+
+					});
+					$(document).mousemove(function(event) {
+						that.lisuStopEvent(event);
+						//移动
+						if(that.liusZoomOpt.lisuMove) {
+							$(that).css({
+								top: (event.pageY - that.liusZoomOpt.lisuY),
+								left: (event.pageX - that.liusZoomOpt.lisuX)
+							});
+							//移动时改变透明度
+							$(that)[0].style.opacity = "0.5";
+
+						}
+					}).mouseup(function(event) {
+						that.liusZoomOpt.lisuMove = false;
+						$(that).fadeTo(20, 1);
+						that.lisuStopEvent(event);
+					});
+
+				},
+				//阻止 冒泡 浏览器默认行为
+				lisuStopEvent: function(event) {
+					var event = event || window.event;
+					//阻止冒泡
+					if(event.stopPropagation) event.stopPropagation();
+					else　 window.event.cancelBubble = true;
+					//取消默认事件（避免跟mouseup冲突）
+					if(event.preventDefault) event.preventDefault();
+					else window.event.returnValue = false;
+				}
+			});
+
+			//初始化图片放大
+			$(".imgMains").initZoomImg();
+
+			function addImg() {
+				$("#dddd").append('<img src="//gw.alicdn.com/bao/uploaded/i2/TB1kwtHQpXXXXb_aXXXXXXXXXXX_!!0-item_pic.jpg" class="imgMains" data-name="好" />');
+				$("img").initZoomImg();
+			}
+			//js本地图片预览，兼容ie[6-11]、火狐、Chrome17+、Opera11+、Maxthon3+、360浏览器、百度浏览器
+			function PreviewImage(fileObj, imgPreviewId, divPreviewId) {
+				var allowExtention = document.getElementById("fuHeadPhoto").value; //.jpg,.bmp,.gif,.png,允许上传文件的后缀名
+				var extention = fileObj.value.substring(fileObj.value.lastIndexOf(".") + 1).toLowerCase(); //获取当前上传文件的扩展名
+				var browserVersion = window.navigator.userAgent.toUpperCase();
+				if(allowExtention.indexOf(extention) > -1) {
+					if(fileObj.files) { //兼容chrome、火狐7+、360浏览器5.5+等，应该也兼容ie10，HTML5实现预览
+						if(window.FileReader) {
+							var reader = new FileReader();
+							reader.onload = function(e) {
+								document.getElementById(imgPreviewId).setAttribute("src", e.target.result);
+							}
+							reader.readAsDataURL(fileObj.files[0]);
+						} else if(browserVersion.indexOf("SAFARI") > -1) {
+							alert("不支持Safari浏览器6.0以下版本的图片预览!");
+						} else {
+							alert("不支持您当前使用的浏览器的图片预览!");
+						}
+					} else if(browserVersion.indexOf("MSIE") > -1) { //ie、360低版本预览
+						if(browserVersion.indexOf("MSIE 6") > -1) { //ie6
+							document.getElementById(imgPreviewId).setAttribute("src", fileObj.value);
+						} else { //ie[7-9]
+							fileObj.select();
+							if(browserVersion.indexOf("MSIE 9") > -1) {
+								//fileObj.blur(); //不加上document.selection.createRange().text在ie9会拒绝访问
+								document.getElementById(divPreviewId).focus(); //参考http://gallop-liu.iteye.com/blog/1344778
+							}
+							var newPreview = document.getElementById(divPreviewId + "New");
+							if(newPreview == null) {
+								newPreview = document.createElement("div");
+								newPreview.setAttribute("id", divPreviewId + "New");
+								newPreview.style.width = document.getElementById(imgPreviewId).width + "px";
+								newPreview.style.height = document.getElementById(imgPreviewId).height + "px";
+								newPreview.style.border = "solid 1px #d2e2e2";
+							}
+							newPreview.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='" + document.selection.createRange().text + "')";
+							var tempDivPreview = document.getElementById(divPreviewId);
+							tempDivPreview.parentNode.insertBefore(newPreview, tempDivPreview);
+							tempDivPreview.style.display = "none";
+						}
+					} else if(browserVersion.indexOf("FIREFOX") > -1) { //firefox
+						var firefoxVersion = parseFloat(browserVersion.toLowerCase().match(/firefox\/([\d.]+)/)[1]);
+						if(firefoxVersion < 7) { //firefox7以下版本
+							document.getElementById(imgPreviewId).setAttribute("src", fileObj.files[0].getAsDataURL());
+						} else { //firefox7.0+                    
+							document.getElementById(imgPreviewId).setAttribute("src", window.URL.createObjectURL(fileObj.files[0]));
+						}
+					} else {
+						alert("不支持您当前使用的浏览器的图片预览!");
+					}
+				} else {
+					alert("仅支持" + allowExtention + "为后缀名的文件!");
+					fileObj.value = ""; //清空选中文件
+					if(browserVersion.indexOf("MSIE") > -1) {
+						fileObj.select();
+						document.selection.clear();
+					}
+					fileObj.outerHTML = fileObj.outerHTML;
+				}
+			}
+		</script>
+	</body>
+
+</html>
